@@ -1,0 +1,2543 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>หน่วยที่ 1 แผนที่ 6: Listening: Call for Help | ครูนรินทร์</title>
+  <!-- Google Fonts: Mali -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mali: ['"Mali"', 'sans-serif'],
+          },
+          colors: {
+            crimson: {
+              50: '#FEF2F2',
+              100: '#FEE2E2',
+              500: '#EF4444',
+              600: '#DC2626',
+              700: '#B91C1C',
+              800: '#991B1B',
+            },
+            navy: {
+              800: '#1E293B',
+              900: '#0F172A',
+              950: '#090D16',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    * {
+      font-family: 'Mali', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #F1F5F9;
+      color: #0F172A;
+      overflow-x: hidden;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #E2E8F0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 9999px;
+    }
+    /* Ambulance Siren Pulse Animation */
+    @keyframes sirenGlow {
+      0%, 100% { box-shadow: 0 0 12px rgba(220, 38, 38, 0.55); }
+      50% { box-shadow: 0 0 18px rgba(37, 99, 235, 0.65); }
+    }
+    .siren-badge {
+      animation: sirenGlow 1.6s infinite ease-in-out;
+    }
+    /* Arcade Game Semi-Transparent Controls (50% opacity, 85% active) */
+    .arcade-btn {
+      opacity: 0.5;
+      transition: opacity 0.1s ease, transform 0.08s ease;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    .arcade-btn:active, .arcade-btn.is-pressed {
+      opacity: 0.85;
+      transform: scale(0.95);
+    }
+    /* Sound wave animation for audio playback */
+    @keyframes waveBar {
+      0%, 100% { height: 6px; }
+      50% { height: 20px; }
+    }
+    .wave-bar {
+      animation: waveBar 0.6s infinite ease-in-out;
+    }
+    .wave-bar:nth-child(2) { animation-delay: 0.15s; }
+    .wave-bar:nth-child(3) { animation-delay: 0.3s; }
+    .wave-bar:nth-child(4) { animation-delay: 0.45s; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-100 text-slate-900">
+
+  <!-- Toast Notification Banner (Replaces alert()) -->
+  <div id="toast-container" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 -translate-y-3 w-[92%] max-w-md">
+    <div id="toast-box" class="bg-navy-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border-2 border-crimson-500 flex items-center gap-3 text-sm sm:text-base font-semibold">
+      <span id="toast-icon" class="text-xl">⚠️</span>
+      <span id="toast-message">แจ้งเตือน</span>
+    </div>
+  </div>
+
+  <!-- Top Emergency Header -->
+  <header class="bg-gradient-to-r from-navy-900 via-slate-900 to-crimson-800 text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3 text-center sm:text-left">
+        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-crimson-600 flex items-center justify-center text-2xl sm:text-3xl shadow-md siren-badge shrink-0 border-2 border-white/30">
+          🚑
+        </div>
+        <div>
+          <div class="inline-flex items-center gap-2 bg-white/15 px-3 py-0.5 rounded-full text-xs sm:text-sm font-medium text-amber-300 mb-1">
+            <span>ภาษาอังกฤษ ม.3 • ภาคเรียนที่ 2/2569</span>
+            <span class="hidden sm:inline">•</span>
+            <span class="hidden sm:inline">หน่วยที่ 1: An Emergency?</span>
+          </div>
+          <h1 class="text-lg sm:text-2xl font-bold tracking-wide text-white">
+            แผนที่ 6: Listening: Call for Help
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-200">
+            โดย ครูนรินทร์ อนงค์ชัย • โรงเรียนเทพอุดมวิทยา สพม.สุรินทร์
+          </p>
+        </div>
+      </div>
+
+      <!-- Global Sound On/Off Toggle -->
+      <button id="global-sound-btn" onclick="toggleGlobalSound()" type="button"
+        class="px-4 py-2.5 rounded-2xl bg-white text-navy-900 hover:bg-amber-50 active:scale-95 transition font-bold text-sm sm:text-base shadow-md flex items-center gap-2 border-2 border-amber-300 shrink-0">
+        <span id="global-sound-icon" class="text-lg">🔊</span>
+        <span id="global-sound-label">เสียง: เปิด (ON)</span>
+      </button>
+    </div>
+
+    <!-- Top Navigation Bar (4 Tabs) -->
+    <nav class="bg-navy-950/90 border-t border-white/10 sticky top-0 z-30 backdrop-blur">
+      <div class="max-w-6xl mx-auto px-2 sm:px-4 py-2 grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <button id="tab-btn-knowledge" onclick="switchTab('knowledge')" type="button"
+          class="tab-btn px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm md:text-base transition flex items-center justify-center gap-1.5 bg-crimson-600 text-white shadow-md">
+          <span>📖</span>
+          <span>ใบความรู้ (Knowledge)</span>
+        </button>
+        <button id="tab-btn-game" onclick="switchTab('game')" type="button"
+          class="tab-btn px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm md:text-base transition flex items-center justify-center gap-1.5 bg-white/10 text-slate-200 hover:bg-white/20">
+          <span>🎮</span>
+          <span>เกมคำศัพท์ (Vocabulary Game)</span>
+        </button>
+        <button id="tab-btn-exercise" onclick="switchTab('exercise')" type="button"
+          class="tab-btn px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm md:text-base transition flex items-center justify-center gap-1.5 bg-white/10 text-slate-200 hover:bg-white/20">
+          <span>📝</span>
+          <span>แบบฝึกหัด (Exercise)</span>
+        </button>
+        <button id="tab-btn-posttest" onclick="switchTab('posttest')" type="button"
+          class="tab-btn px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm md:text-base transition flex items-center justify-center gap-1.5 bg-white/10 text-slate-200 hover:bg-white/20">
+          <span>🏆</span>
+          <span>แบบทดสอบหลังเรียน (Post-test)</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-3 sm:px-5 py-6">
+
+    <!-- =========================================================
+         TAB 1: ใบความรู้ (KNOWLEDGE)
+         ========================================================= -->
+    <section id="tab-knowledge" class="space-y-8">
+
+      <!-- Section 1.1: 5W1H Listening Strategy -->
+      <div class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden">
+        <div class="bg-navy-900 text-white px-5 py-4 flex items-center gap-3">
+          <span class="text-2xl">🎧</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold">กลวิธีการฟังจับใจความเหตุฉุกเฉิน (5W1H Listening Strategy)</h2>
+            <p class="text-xs sm:text-sm text-slate-300">เทคนิคการตั้งสติและจับคำสำคัญ (Keywords) เมื่อฟังบทสนทนาขอความช่วยเหลือ</p>
+          </div>
+        </div>
+        <div class="p-5 sm:p-6">
+          <p class="text-sm sm:text-base text-slate-700 mb-5 leading-relaxed">
+            ในการฟังบทสนทนาโทรแจ้งเหตุฉุกเฉิน (<span class="font-bold text-crimson-600">Emergency Call 1669 / 911</span>) ผู้พูดมักจะพูดด้วยความเร่งรีบ นักเรียนไม่จำเป็นต้องแปลทุกคำ แต่ให้ตั้งสมาธิจับข้อมูลสำคัญ <span class="font-bold text-navy-900">4 ประเด็นหลัก</span> ดังนี้ครับ:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-crimson-50 border-2 border-crimson-200 rounded-2xl p-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-8 h-8 rounded-xl bg-crimson-600 text-white font-bold flex items-center justify-center text-sm">1</span>
+                <h3 class="font-bold text-crimson-700 text-base sm:text-lg">WHAT (เกิดอะไรขึ้น)</h3>
+              </div>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                ฟังประเภทของเหตุฉุกเฉินและหน่วยงานที่ต้องการ เช่น <em>motorcycle accident</em> (อุบัติเหตุมอเตอร์ไซค์), <em>fire</em> (ไฟไหม้), <em>ambulance</em> (รถพยาบาล)
+              </p>
+            </div>
+            <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-8 h-8 rounded-xl bg-blue-700 text-white font-bold flex items-center justify-center text-sm">2</span>
+                <h3 class="font-bold text-blue-800 text-base sm:text-lg">WHERE (เกิดที่ไหน)</h3>
+              </div>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                ฟังชื่อถนน ซอย และจุดสังเกตสำคัญ (<span class="font-bold text-blue-800">Landmark</span>) เช่น <em>in front of the bus station</em> (หน้าสถานีขนส่ง), <em>behind the library</em>
+              </p>
+            </div>
+            <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-8 h-8 rounded-xl bg-amber-600 text-white font-bold flex items-center justify-center text-sm">3</span>
+                <h3 class="font-bold text-amber-800 text-base sm:text-lg">WHO / HOW (อาการ)</h3>
+              </div>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                ฟังจำนวนผู้บาดเจ็บและอาการสำคัญ เช่น <em>unconscious</em> (หมดสติ), <em>bleeding</em> (เลือดออก), <em>breathing</em> (หายใจอยู่)
+              </p>
+            </div>
+            <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white font-bold flex items-center justify-center text-sm">4</span>
+                <h3 class="font-bold text-emerald-800 text-base sm:text-lg">ACTION (คำแนะนำ)</h3>
+              </div>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                ฟังคำสั่งของเจ้าหน้าที่ (<span class="font-bold text-emerald-800">Operator</span>) ระหว่างรอรถพยาบาล เช่น <em>stay calm</em> (ตั้งสติ), <em>don't move her</em> (ห้ามเคลื่อนย้าย), <em>stay on the line</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 1.2: Interactive Audio Dialogue Player (Sample 1669 Call) -->
+      <div class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-crimson-700 to-navy-900 text-white px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">📞</span>
+            <div>
+              <h2 class="text-lg sm:text-xl font-bold">ตัวอย่างบทสนทนาแจ้งเหตุฉุกเฉิน 1669 (Interactive Audio Dialogue)</h2>
+              <p class="text-xs sm:text-sm text-slate-200">กดปุ่มเล่นทั้งหมด หรือกดปุ่ม 🔊 รายบรรทัดเพื่อฝึกฟังสำเนียงภาษาอังกฤษ (en-US)</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="play-full-dialogue-btn" onclick="playFullDialogue()" type="button"
+              class="px-4 py-2.5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-navy-950 font-bold text-sm shadow-md flex items-center gap-2 transition active:scale-95">
+              <span>▶️</span>
+              <span>Play Full Dialogue</span>
+            </button>
+            <button id="stop-dialogue-btn" onclick="stopDialogue()" type="button"
+              class="hidden px-4 py-2.5 rounded-2xl bg-white text-crimson-700 font-bold text-sm shadow-md flex items-center gap-1.5 transition active:scale-95">
+              <span>⏹️</span>
+              <span>หยุด</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="dialogue-lines-container" class="p-4 sm:p-6 space-y-3 bg-slate-50">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </div>
+
+      <!-- Section 1.3: 12 Lesson Vocabulary Cards -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-white px-5 py-4 rounded-2xl shadow-sm border border-slate-200">
+          <div class="flex items-center gap-2.5">
+            <span class="text-2xl">📚</span>
+            <div>
+              <h2 class="text-lg sm:text-xl font-bold text-navy-900">คำศัพท์สำคัญประจำบทเรียน (12 Key Vocabulary Words)</h2>
+              <p class="text-xs sm:text-sm text-slate-500">กดปุ่ม 🔊 เพื่อฟังเสียงอ่านคำศัพท์และประโยคตัวอย่าง</p>
+            </div>
+          </div>
+          <span class="inline-flex items-center px-3 py-1 rounded-full bg-crimson-100 text-crimson-700 text-xs font-bold self-start sm:self-center">
+            ใช้คำศัพท์ทั้ง 12 คำนี้ในเกมและแบบฝึกหัด!
+          </span>
+        </div>
+
+        <div id="vocab-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- 12 Uniform White Vocabulary Cards rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Section 1.4: Useful Expressions (Operator vs Caller) -->
+      <div class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden">
+        <div class="bg-navy-900 text-white px-5 py-4 flex items-center gap-3">
+          <span class="text-2xl">💬</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold">สำนวนภาษาที่ใช้ในการสนทนา (Useful Expressions)</h2>
+            <p class="text-xs sm:text-sm text-slate-300">เปรียบเทียบประโยคของเจ้าหน้าที่รับแจ้งเหตุ (Operator) และผู้แจ้งเหตุ (Caller)</p>
+          </div>
+        </div>
+        <div class="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Operator Column -->
+          <div class="bg-blue-50/70 border-2 border-blue-200 rounded-2xl p-4 space-y-3">
+            <div class="flex items-center gap-2 border-b border-blue-200 pb-2.5">
+              <span class="text-2xl">🎧</span>
+              <h3 class="font-bold text-blue-900 text-base sm:text-lg">เจ้าหน้าที่รับแจ้งเหตุ (Emergency Operator)</h3>
+            </div>
+            <div id="operator-expressions-list" class="space-y-2.5">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Caller Column -->
+          <div class="bg-crimson-50/70 border-2 border-crimson-200 rounded-2xl p-4 space-y-3">
+            <div class="flex items-center gap-2 border-b border-crimson-200 pb-2.5">
+              <span class="text-2xl">📱</span>
+              <h3 class="font-bold text-crimson-800 text-base sm:text-lg">ผู้โทรขอความช่วยเหลือ (Caller)</h3>
+            </div>
+            <div id="caller-expressions-list" class="space-y-2.5">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =========================================================
+         TAB 2: เกมคำศัพท์ (VOCABULARY ARCADE GAME)
+         ========================================================= -->
+    <section id="tab-game" class="hidden">
+      <div class="max-w-xl mx-auto bg-white rounded-3xl shadow-lg border border-slate-200 p-4 sm:p-6">
+        <div class="text-center mb-4">
+          <h2 class="text-xl sm:text-2xl font-bold text-navy-900 flex items-center justify-center gap-2">
+            <span>🚑</span>
+            <span>1669 Rescue Run: ขับรถกู้ชีพเก็บคำศัพท์</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">
+            บังคับรถพยาบาลหลบกรวยจราจร (🚧) และเก็บคำศัพท์ฉุกเฉินให้ทันเวลา 60 วินาที!
+          </p>
+        </div>
+
+        <!-- Mode Switcher at Top of Game -->
+        <div class="grid grid-cols-2 gap-2 bg-slate-100 p-1.5 rounded-2xl mb-3 border border-slate-200">
+          <button id="game-mode-1-btn" onclick="setGameMode(1)" type="button"
+            class="py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition bg-crimson-600 text-white shadow">
+            🚨 แยกหมวดคำศัพท์ในบทเรียน
+          </button>
+          <button id="game-mode-2-btn" onclick="setGameMode(2)" type="button"
+            class="py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition text-slate-700 hover:bg-white">
+            🎯 แปลตามสั่ง x3
+          </button>
+        </div>
+
+        <!-- Mode 2 Target Mission Banner -->
+        <div id="mode2-mission-banner" class="hidden mb-3 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 border-2 border-amber-600 text-navy-950 rounded-2xl px-4 py-2.5 text-center font-bold text-sm sm:text-base shadow-md">
+          🎯 รับคำว่า: "<span id="mode2-thai-target" class="text-crimson-700 underline decoration-2">เหตุฉุกเฉิน</span>" (+50!)
+        </div>
+
+        <!-- HUD Bar -->
+        <div class="grid grid-cols-4 gap-1.5 sm:gap-2 bg-navy-900 text-white rounded-2xl p-2.5 mb-3 text-center shadow">
+          <div class="bg-white/10 rounded-xl py-1.5 px-1">
+            <div class="text-[10px] sm:text-xs text-slate-300">พลังชีวิต</div>
+            <div id="hud-hearts" class="text-sm sm:text-base font-bold tracking-tight">❤️❤️❤️</div>
+          </div>
+          <div class="bg-white/10 rounded-xl py-1.5 px-1">
+            <div class="text-[10px] sm:text-xs text-slate-300">เวลา</div>
+            <div id="hud-timer" class="text-sm sm:text-base font-bold text-amber-300">60s</div>
+          </div>
+          <div class="bg-white/10 rounded-xl py-1.5 px-1">
+            <div class="text-[10px] sm:text-xs text-slate-300">คะแนน</div>
+            <div id="hud-score" class="text-sm sm:text-base font-bold text-emerald-300">0</div>
+          </div>
+          <div class="bg-white/10 rounded-xl py-1.5 px-1">
+            <div class="text-[10px] sm:text-xs text-slate-300">สูงสุด</div>
+            <div id="hud-highscore" class="text-sm sm:text-base font-bold text-sky-300">0</div>
+          </div>
+        </div>
+
+        <!-- Combo & Power-up Status Strip -->
+        <div class="flex items-center justify-between min-h-[34px] mb-2 px-1">
+          <div id="hud-combo-badge" class="invisible px-3 py-1 rounded-full bg-gradient-to-r from-orange-500 to-crimson-600 text-white text-xs sm:text-sm font-bold shadow">
+            COMBO x2
+          </div>
+          <div id="hud-shield-badge" class="hidden px-3 py-1 rounded-full bg-amber-400 text-navy-950 text-xs sm:text-sm font-bold shadow animate-pulse">
+            ⭐ SHIELD: 6.0s (1.25x SPEED)
+          </div>
+        </div>
+
+        <!-- 9:16 Canvas Wrapper -->
+        <div class="relative w-full max-w-[400px] mx-auto aspect-[400/640] rounded-3xl overflow-hidden border-4 border-navy-900 shadow-2xl bg-slate-800">
+          <canvas id="game-canvas" width="400" height="640" class="w-full h-full block"></canvas>
+
+          <!-- Start Overlay -->
+          <div id="game-start-overlay" class="absolute inset-0 bg-navy-950/85 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center text-white z-10">
+            <div class="text-6xl mb-3 animate-bounce">🚑</div>
+            <h3 class="text-2xl font-bold text-amber-300 mb-2">พร้อมออกปฏิบัติการหรือยัง?</h3>
+            <p id="game-mode-desc" class="text-sm text-slate-200 mb-4 leading-relaxed">
+              <strong>โหมด 1:</strong> เก็บคำศัพท์ในบทเรียน 12 คำ (+10 คะแนน) และหลบคำศัพท์นอกบทเรียนหรือกรวยจราจร (🚧)
+            </p>
+            <div class="bg-white/10 rounded-2xl p-3 text-xs text-left space-y-1.5 mb-5 w-full border border-white/15">
+              <div>⭐ <strong>SHIELD:</strong> เกราะทอง 6 วิ + ความเร็ว 1.25x กันสิ่งกีดขวาง</div>
+              <div>⏰ <strong>+7s:</strong> เพิ่มเวลาภารกิจอีก 7 วินาที</div>
+              <div>💖 <strong>HEAL:</strong> ฟื้นฟูพลังชีวิต +1 หัวใจ</div>
+              <div>⚡ <strong>TURBO:</strong> กดปุ่มสายฟ้าตรงกลาง (หรือ Space) พุ่งหลบด่วน!</div>
+            </div>
+            <button onclick="startGame()" type="button"
+              class="w-full py-3.5 px-6 rounded-2xl bg-crimson-600 hover:bg-crimson-500 text-white font-bold text-lg shadow-lg border-2 border-white/30 active:scale-95 transition">
+              🚨 เริ่มขับรถกู้ชีพ (START)
+            </button>
+          </div>
+
+          <!-- Game Over Overlay -->
+          <div id="game-over-overlay" class="hidden absolute inset-0 bg-navy-950/90 backdrop-blur-md flex flex-col items-center justify-between p-5 text-center text-white z-20 overflow-y-auto">
+            <div class="w-full pt-1">
+              <div class="text-4xl mb-1">🏁</div>
+              <h3 class="text-2xl font-bold text-amber-300">จบภารกิจกู้ชีพ!</h3>
+              <div id="gameover-rank-badge" class="inline-block mt-1.5 px-3.5 py-1 rounded-full bg-crimson-600 text-white text-xs sm:text-sm font-bold border border-amber-300">
+                🏅 หน่วยกู้ชีพดีเด่น
+              </div>
+              <div class="mt-3 bg-white/10 rounded-2xl p-3 border border-white/15">
+                <div class="text-xs text-slate-300">คะแนนรวมที่ได้</div>
+                <div id="gameover-score" class="text-3xl font-bold text-emerald-300">0</div>
+                <div id="gameover-highscore-msg" class="text-xs text-amber-300 font-semibold mt-0.5">สถิติสูงสุด: 0</div>
+              </div>
+            </div>
+
+            <!-- Interactive Caught Words Review List -->
+            <div class="w-full my-3 text-left bg-white/10 rounded-2xl p-3 border border-white/15 flex-grow max-h-[230px] overflow-y-auto">
+              <div class="text-xs font-bold text-amber-300 mb-2 flex items-center justify-between">
+                <span>🔊 คำศัพท์ที่เก็บได้ในรอบนี้ (แตะเพื่อฟังเสียง):</span>
+                <span id="gameover-caught-count" class="text-white">0 คำ</span>
+              </div>
+              <div id="gameover-caught-words" class="flex flex-wrap gap-1.5">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <button onclick="startGame()" type="button"
+              class="w-full py-3 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base shadow-lg border-2 border-white/30 active:scale-95 transition shrink-0">
+              🔄 เล่นอีกครั้ง (Play Again)
+            </button>
+          </div>
+        </div>
+
+        <!-- 3 Semi-Transparent Arcade Control Buttons Below Canvas -->
+        <div class="max-w-[400px] mx-auto mt-3 grid grid-cols-3 gap-2.5">
+          <button id="ctrl-left" type="button"
+            class="arcade-btn bg-navy-900 text-white py-4 rounded-2xl font-bold text-xl shadow-md border-2 border-slate-400 flex flex-col items-center justify-center">
+            <span>◀</span>
+            <span class="text-[11px] font-normal mt-0.5">ซ้าย</span>
+          </button>
+          <button id="ctrl-turbo" type="button"
+            class="arcade-btn bg-cyan-600 text-white py-4 rounded-2xl font-bold text-base sm:text-lg shadow-md border-2 border-cyan-300 flex flex-col items-center justify-center">
+            <span>⚡ TURBO</span>
+            <span class="text-[11px] font-normal mt-0.5">พุ่งหลบ ±75px</span>
+          </button>
+          <button id="ctrl-right" type="button"
+            class="arcade-btn bg-navy-900 text-white py-4 rounded-2xl font-bold text-xl shadow-md border-2 border-slate-400 flex flex-col items-center justify-center">
+            <span>▶</span>
+            <span class="text-[11px] font-normal mt-0.5">ขวา</span>
+          </button>
+        </div>
+        <p class="text-center text-[11px] text-slate-400 mt-2">
+          รองรับทั้งการแตะปุ่มบนหน้าจอ และปุ่มคีย์บอร์ด (◀ ▶ / A-D / Spacebar)
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TAB 3: แบบฝึกหัด (EXERCISE)
+         ========================================================= -->
+    <section id="tab-exercise" class="hidden max-w-4xl mx-auto space-y-6">
+      <div class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-navy-900 to-crimson-700 text-white px-5 py-4 flex items-center justify-between">
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold">📝 แบบฝึกหัดทบทวน (Lesson 6 Exercise)</h2>
+            <p class="text-xs sm:text-sm text-slate-200">ระบบสุ่มลำดับข้อคำถามอัตโนมัติ • คะแนนเต็ม 10 คะแนน</p>
+          </div>
+          <span class="text-3xl">📋</span>
+        </div>
+
+        <div class="p-5 sm:p-6 space-y-6">
+          <!-- Required Student Name Input -->
+          <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-4">
+            <label for="exercise-student-name" class="block font-bold text-navy-900 text-sm sm:text-base mb-1.5">
+              👤 ชื่อ-นามสกุล นักเรียน <span class="text-crimson-600">* (จำเป็นต้องกรอกก่อนส่งคำตอบ)</span>
+            </label>
+            <input id="exercise-student-name" type="text" placeholder="เช่น เด็กชายนรินทร์ อนงค์ชัย ชั้น ม.3/1"
+              class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-crimson-600 focus:outline-none bg-white text-slate-900 font-medium text-sm sm:text-base" />
+          </div>
+
+          <!-- Part 1: 5 Multiple Choice Questions -->
+          <div class="space-y-4">
+            <div class="border-b-2 border-crimson-600 pb-2 flex items-center justify-between">
+              <h3 class="font-bold text-base sm:text-lg text-navy-900">
+                ตอนที่ 1: เลือกคำตอบที่ถูกต้องที่สุด (5 ข้อ / 5 คะแนน)
+              </h3>
+              <span class="text-xs font-bold bg-crimson-100 text-crimson-700 px-2.5 py-1 rounded-full">Multiple Choice</span>
+            </div>
+            <div id="exercise-part1-container" class="space-y-4">
+              <!-- Shuffled Part 1 questions rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Part 2: 5 Fill-in-the-blank Questions -->
+          <div class="space-y-4 pt-2">
+            <div class="border-b-2 border-blue-700 pb-2 flex items-center justify-between">
+              <h3 class="font-bold text-base sm:text-lg text-navy-900">
+                ตอนที่ 2: เติมคำศัพท์ภาษาอังกฤษจากบทเรียนให้ถูกต้อง (5 ข้อ / 5 คะแนน)
+              </h3>
+              <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full">Fill in the Blank</span>
+            </div>
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 text-xs sm:text-sm text-blue-900">
+              💡 <strong>คำแนะนำ:</strong> พิมพ์คำศัพท์ภาษาอังกฤษจากใบความรู้ (ตัวพิมพ์เล็กหรือพิมพ์ใหญ่ก็ได้ ระบบตรวจให้อัตโนมัติ)
+            </div>
+            <div id="exercise-part2-container" class="space-y-4">
+              <!-- Shuffled Part 2 questions rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Single Submit Button -->
+          <div class="pt-4">
+            <button onclick="submitExercise()" type="button"
+              class="w-full py-4 px-6 rounded-2xl bg-crimson-600 hover:bg-crimson-700 text-white font-bold text-lg shadow-lg transition active:scale-[0.99] flex items-center justify-center gap-2">
+              <span>✅</span>
+              <span>ส่งคำตอบ</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TAB 4: แบบทดสอบหลังเรียน (POST-TEST)
+         ========================================================= -->
+    <section id="tab-posttest" class="hidden max-w-3xl mx-auto">
+      <div class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-navy-900 via-blue-900 to-crimson-700 text-white px-5 py-4 flex items-center justify-between">
+          <div>
+            <h2 class="text-lg sm:text-xl font-bold">🏆 แบบทดสอบหลังเรียน (Listening Post-test)</h2>
+            <p class="text-xs sm:text-sm text-slate-200">ฟังสถานการณ์ฉุกเฉินใหม่และตอบคำถาม 5 ข้อ • สุ่มลำดับข้อและตัวเลือกทุกครั้ง</p>
+          </div>
+          <span class="text-3xl">🎧</span>
+        </div>
+
+        <!-- Step 1: Post-test Start Screen -->
+        <div id="posttest-start-screen" class="p-6 sm:p-8 space-y-5">
+          <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-4 sm:p-5 space-y-2">
+            <h3 class="font-bold text-blue-900 text-base sm:text-lg flex items-center gap-2">
+              <span>📌</span>
+              <span>คำชี้แจงการทำแบบทดสอบหลังเรียน</span>
+            </h3>
+            <ul class="text-sm text-slate-700 space-y-1.5 list-disc list-inside leading-relaxed">
+              <li>แบบทดสอบมีจำนวน <strong>5 ข้อ</strong> (ข้อละ 1 คะแนน รวม 5 คะแนน)</li>
+              <li>เป็นสถานการณ์จำลองการโทรแจ้งเหตุฉุกเฉิน 1669 เรื่องใหม่ (นักเรียนสามารถกดปุ่ม <strong>🔊 Listen to Scenario</strong> เพื่อฟังเสียงได้ตลอดเวลา)</li>
+              <li>กรอก <strong>ชื่อ-นามสกุล</strong> ให้เรียบร้อยก่อนกดปุ่มเริ่มทำแบบทดสอบ</li>
+            </ul>
+          </div>
+
+          <div>
+            <label for="posttest-student-name" class="block font-bold text-navy-900 text-sm sm:text-base mb-1.5">
+              👤 ชื่อ-นามสกุล นักเรียน <span class="text-crimson-600">*</span>
+            </label>
+            <input id="posttest-student-name" type="text" placeholder="พิมพ์ชื่อ-นามสกุล และชั้นเรียน เช่น นางสาวใจดี มีสุข ม.3/2"
+              class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-blue-700 focus:outline-none bg-white text-slate-900 font-medium text-sm sm:text-base" />
+          </div>
+
+          <button onclick="startPostTest()" type="button"
+            class="w-full py-4 px-6 rounded-2xl bg-navy-900 hover:bg-blue-900 text-white font-bold text-lg shadow-lg transition active:scale-[0.99] flex items-center justify-center gap-2">
+            <span>🚀</span>
+            <span>เริ่มทำแบบทดสอบ</span>
+          </button>
+        </div>
+
+        <!-- Step 2: Post-test Active Question Screen (1 question at a time) -->
+        <div id="posttest-quiz-screen" class="hidden p-5 sm:p-7 space-y-5">
+          <!-- Audio Player Bar for the Brand-New Scenario -->
+          <div class="bg-crimson-50 border-2 border-crimson-200 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-xl bg-crimson-600 text-white flex items-center justify-center text-xl shrink-0">
+                📞
+              </div>
+              <div>
+                <div class="font-bold text-crimson-800 text-sm sm:text-base">Audio Scenario: School Science Emergency</div>
+                <div class="text-xs text-slate-600">กดปุ่มเพื่อฟังเสียงบทสนทนาเหตุฉุกเฉินประกอบการตอบคำถาม</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+              <button id="posttest-listen-btn" onclick="playPostTestScenario()" type="button"
+                class="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-crimson-600 hover:bg-crimson-700 text-white font-bold text-sm shadow flex items-center justify-center gap-2 transition active:scale-95">
+                <span>🔊</span>
+                <span>Listen to Scenario</span>
+              </button>
+              <button id="posttest-stop-btn" onclick="stopSpeech()" type="button"
+                class="hidden px-3 py-2.5 rounded-xl bg-slate-800 text-white font-bold text-sm shadow">
+                ⏹️
+              </button>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="space-y-1.5">
+            <div class="flex justify-between text-xs sm:text-sm font-bold text-slate-600">
+              <span id="posttest-progress-label">ข้อที่ 1 จาก 5</span>
+              <span id="posttest-progress-percent" class="text-blue-700">20%</span>
+            </div>
+            <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden">
+              <div id="posttest-progress-bar" class="h-full bg-gradient-to-r from-blue-600 to-crimson-600 transition-all duration-300 rounded-full" style="width: 20%"></div>
+            </div>
+          </div>
+
+          <!-- Current Single Question Card -->
+          <div id="posttest-question-box" class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 sm:p-6 space-y-4">
+            <h3 id="posttest-question-text" class="font-bold text-base sm:text-lg text-navy-900 leading-relaxed">
+              Question text here
+            </h3>
+            <div id="posttest-options-container" class="space-y-2.5">
+              <!-- 4 Shuffled Options rendered here -->
+            </div>
+          </div>
+
+          <!-- Next Button -->
+          <div class="flex justify-end">
+            <button id="posttest-next-btn" onclick="nextPostTestQuestion()" type="button"
+              class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-base shadow-md transition active:scale-95 flex items-center justify-center gap-2">
+              <span id="posttest-next-label">Next ➡️</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Post-test Screenshot-Ready Summary Card -->
+        <div id="posttest-result-screen" class="hidden p-5 sm:p-8">
+          <div class="border-4 border-navy-900 rounded-3xl bg-gradient-to-b from-white via-slate-50 to-blue-50 p-6 sm:p-8 text-center shadow-xl space-y-4 relative overflow-hidden">
+            <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-navy-900 text-amber-300 text-xs sm:text-sm font-bold">
+              <span>🏫 โรงเรียนเทพอุดมวิทยา สพม.สุรินทร์</span>
+            </div>
+            <div class="text-5xl sm:text-6xl pt-1" id="posttest-result-emoji">🏆</div>
+            <div>
+              <h3 class="text-xl sm:text-2xl font-bold text-navy-900">ผลการทดสอบหลังเรียน (Post-test Summary)</h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-0.5">วิชาภาษาอังกฤษ ม.3 • หน่วยที่ 1 แผนที่ 6: Listening: Call for Help</p>
+            </div>
+
+            <div class="bg-white border-2 border-slate-200 rounded-2xl p-4 max-w-md mx-auto shadow-sm">
+              <div class="text-xs text-slate-500">ชื่อ-นามสกุล ผู้เข้าสอบ</div>
+              <div id="posttest-result-name" class="text-lg sm:text-xl font-bold text-navy-900 mt-0.5 break-words">
+                นักเรียนตัวอย่าง
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-crimson-600 to-navy-900 text-white rounded-2xl p-5 max-w-md mx-auto shadow-md">
+              <div class="text-xs sm:text-sm text-slate-200">คะแนนสอบที่ได้</div>
+              <div class="text-4xl sm:text-5xl font-bold text-amber-300 my-1">
+                <span id="posttest-result-score">5</span> / 5
+              </div>
+              <div id="posttest-result-badge" class="inline-block px-3 py-0.5 rounded-full bg-white/20 text-xs sm:text-sm font-semibold">
+                ระดับคุณภาพ: ดีเยี่ยม (ผ่านเกณฑ์)
+              </div>
+            </div>
+
+            <p id="posttest-result-timestamp" class="text-xs text-slate-500">
+              บันทึกผลเมื่อ: -
+            </p>
+
+            <div class="pt-2">
+              <button onclick="resetPostTest()" type="button"
+                class="px-6 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm shadow transition active:scale-95">
+                🔄 ทำแบบทดสอบอีกครั้ง
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Exercise Score Summary Modal (Shows Student's Entered Answer ONLY — Never leaks correct answers!) -->
+  <div id="exercise-modal" class="hidden fixed inset-0 z-50 bg-navy-950/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl border-2 border-slate-200 overflow-hidden">
+      <div class="bg-gradient-to-r from-navy-900 to-crimson-700 text-white px-5 py-4 flex items-center justify-between shrink-0">
+        <div>
+          <h3 class="text-lg sm:text-xl font-bold">📊 สรุปผลการทำแบบฝึกหัด</h3>
+          <p id="modal-student-name" class="text-xs sm:text-sm text-amber-300 font-semibold mt-0.5">นักเรียน: -</p>
+        </div>
+        <button onclick="closeExerciseModal()" type="button"
+          class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold flex items-center justify-center">
+          ✕
+        </button>
+      </div>
+
+      <div class="p-5 overflow-y-auto space-y-4">
+        <!-- Total Score Banner -->
+        <div class="bg-slate-100 border-2 border-slate-200 rounded-2xl p-4 flex items-center justify-between">
+          <div>
+            <div class="text-xs sm:text-sm text-slate-500 font-semibold">คะแนนรวมทั้งหมด</div>
+            <div id="modal-score-status" class="text-sm sm:text-base font-bold text-navy-900 mt-0.5">ผ่านเกณฑ์การประเมิน</div>
+          </div>
+          <div class="text-3xl sm:text-4xl font-bold text-crimson-600">
+            <span id="modal-total-score">0</span><span class="text-lg text-slate-500"> / 10</span>
+          </div>
+        </div>
+
+        <div class="text-xs text-slate-500 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2">
+          📌 แสดงสถานะรายข้อ (✅ ถูกต้อง / ❌ ยังไม่ถูกต้อง) พร้อมคำตอบที่นักเรียนบันทึกไว้
+        </div>
+
+        <!-- Per-question status & student's entered answer ONLY -->
+        <div id="modal-results-list" class="space-y-2.5">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row gap-2.5 shrink-0">
+        <button onclick="closeExerciseModal()" type="button"
+          class="flex-1 py-3 px-4 rounded-xl bg-navy-900 hover:bg-slate-800 text-white font-bold text-sm transition">
+          กลับไปแก้ไขคำตอบเดิม
+        </button>
+        <button onclick="resetAndReshuffleExercise()" type="button"
+          class="flex-1 py-3 px-4 rounded-xl bg-crimson-600 hover:bg-crimson-700 text-white font-bold text-sm transition">
+          🔄 ล้างคำตอบและสุ่มข้อใหม่
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 text-slate-200 border-t border-white/10 mt-10 py-5 px-4 text-center">
+    <p class="text-xs sm:text-sm font-medium tracking-wide">
+      สร้างและพัฒนาโดย นายนรินทร์ อนงค์ชัย ครู โรงเรียนเทพอุดมวิทยา สพม.สุรินทร์
+    </p>
+  </footer>
+
+  <!-- =========================================================
+       APPLICATION JAVASCRIPT
+       ========================================================= -->
+  <script>
+    /* ==========================================================
+       1. GLOBAL STATE, AUDIO SYNTHESIZER & WEB SPEECH TTS
+       ========================================================== */
+    let globalSoundEnabled = true;
+    let audioCtx = null;
+
+    function ensureAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function toggleGlobalSound() {
+      globalSoundEnabled = !globalSoundEnabled;
+      const icon = document.getElementById('global-sound-icon');
+      const label = document.getElementById('global-sound-label');
+      if (globalSoundEnabled) {
+        icon.textContent = '🔊';
+        label.textContent = 'เสียง: เปิด (ON)';
+        ensureAudioContext();
+        playSfx('good', 1);
+      } else {
+        icon.textContent = '🔇';
+        label.textContent = 'เสียง: ปิด (OFF)';
+        stopSpeech();
+      }
+    }
+
+    // Pure Web Audio API Synthesized Sound Effects
+    function playSfx(type, combo = 1) {
+      if (!globalSoundEnabled) return;
+      ensureAudioContext();
+      if (!audioCtx) return;
+
+      const now = audioCtx.currentTime;
+
+      if (type === 'good') {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const baseFreq = 520 + Math.min(combo, 8) * 55;
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(baseFreq, now);
+        osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.35, now + 0.14);
+        gain.gain.setValueAtTime(0.22, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.18);
+      } else if (type === 'bonus') {
+        const notes = [523.25, 659.25, 783.99, 1046.5];
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.065);
+          gain.gain.setValueAtTime(0.2, now + idx * 0.065);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.065 + 0.22);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + idx * 0.065);
+          osc.stop(now + idx * 0.065 + 0.22);
+        });
+      } else if (type === 'bad') {
+        // Noise burst + descending crash tone
+        const bufferSize = audioCtx.sampleRate * 0.22;
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audioCtx.sampleRate * 0.07));
+        }
+        const noise = audioCtx.createBufferSource();
+        noise.buffer = buffer;
+        const noiseGain = audioCtx.createGain();
+        noiseGain.gain.setValueAtTime(0.25, now);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+        noise.connect(noiseGain);
+        noiseGain.connect(audioCtx.destination);
+        noise.start(now);
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(210, now);
+        osc.frequency.exponentialRampToValueAtTime(65, now + 0.25);
+        gain.gain.setValueAtTime(0.22, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.25);
+      } else if (type === 'shield_hit') {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(980, now);
+        osc.frequency.exponentialRampToValueAtTime(1450, now + 0.12);
+        gain.gain.setValueAtTime(0.22, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.16);
+      } else if (type === 'dash') {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(320, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
+        gain.gain.setValueAtTime(0.16, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.14);
+      }
+    }
+
+    // Web Speech API Pronunciation (en-US)
+    let preferredEnVoice = null;
+    function loadVoices() {
+      if (!('speechSynthesis' in window)) return;
+      const voices = window.speechSynthesis.getVoices();
+      preferredEnVoice =
+        voices.find(v => v.lang === 'en-US' && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Samantha'))) ||
+        voices.find(v => v.lang === 'en-US') ||
+        voices.find(v => v.lang.startsWith('en'));
+    }
+    if ('speechSynthesis' in window) {
+      loadVoices();
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+
+    function speakEnglish(text, options = {}) {
+      if (!globalSoundEnabled) {
+        if (!options.silentIfMuted) {
+          showToast('🔇 กรุณากดเปิดเสียงที่มุมขวาบนก่อนฟังเสียงครับ', '🔇');
+        }
+        return;
+      }
+      if (!('speechSynthesis' in window)) {
+        showToast('เบราว์เซอร์นี้ไม่รองรับเสียงสังเคราะห์ (Speech Synthesis)', '⚠️');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      if (preferredEnVoice) utter.voice = preferredEnVoice;
+      utter.rate = options.rate || 0.95;
+      utter.pitch = options.pitch || 1.0;
+      if (options.onend) utter.onend = options.onend;
+      if (options.onerror) utter.onerror = options.onerror;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function stopSpeech() {
+      isPlayingFullDialogue = false;
+      updateDialogueHighlight(-1);
+      const playBtn = document.getElementById('play-full-dialogue-btn');
+      const stopBtn = document.getElementById('stop-dialogue-btn');
+      if (playBtn) playBtn.classList.remove('hidden');
+      if (stopBtn) stopBtn.classList.add('hidden');
+
+      const ptListen = document.getElementById('posttest-listen-btn');
+      const ptStop = document.getElementById('posttest-stop-btn');
+      if (ptListen) ptListen.innerHTML = '<span>🔊</span><span>Listen to Scenario</span>';
+      if (ptStop) ptStop.classList.add('hidden');
+
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    // Custom Toast Notification (Never uses alert())
+    let toastTimeout = null;
+    function showToast(message, icon = '⚠️') {
+      const container = document.getElementById('toast-container');
+      const msgEl = document.getElementById('toast-message');
+      const iconEl = document.getElementById('toast-icon');
+      msgEl.textContent = message;
+      iconEl.textContent = icon;
+      container.classList.remove('opacity-0', '-translate-y-3', 'pointer-events-none');
+      container.classList.add('opacity-100', 'translate-y-0');
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        container.classList.add('opacity-0', '-translate-y-3', 'pointer-events-none');
+        container.classList.remove('opacity-100', 'translate-y-0');
+      }, 3200);
+    }
+
+    // Navigation Tab Switcher
+    function switchTab(tabKey) {
+      stopSpeech();
+      if (tabKey !== 'game' && gameState.running) {
+        pauseGame();
+      }
+      const tabs = ['knowledge', 'game', 'exercise', 'posttest'];
+      tabs.forEach(t => {
+        const sec = document.getElementById(`tab-${t}`);
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (t === tabKey) {
+          sec.classList.remove('hidden');
+          btn.className = 'tab-btn px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm md:text-base transition flex items-center justify-center gap-1.5 bg-crimson-600 text-white shadow-md';
+        } else {
+          sec.classList.add('hidden');
+          btn.className = 'tab-btn px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm md:text-base transition flex items-center justify-center gap-1.5 bg-white/10 text-slate-200 hover:bg-white/20';
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ==========================================================
+       2. LESSON DATA (12 VOCABULARY WORDS, DIALOGUE & EXPRESSIONS)
+       ========================================================== */
+    const LESSON_VOCAB = [
+      {
+        word: 'emergency',
+        emoji: '🚨',
+        pos: 'n.',
+        thai: 'เหตุฉุกเฉิน',
+        example: 'Call 1669 immediately in a medical emergency.'
+      },
+      {
+        word: 'ambulance',
+        emoji: '🚑',
+        pos: 'n.',
+        thai: 'รถพยาบาล',
+        example: 'An ambulance arrived at the scene in five minutes.'
+      },
+      {
+        word: 'operator',
+        emoji: '🎧',
+        pos: 'n.',
+        thai: 'พนักงานรับแจ้งเหตุ',
+        example: 'The operator asked for the exact address.'
+      },
+      {
+        word: 'unconscious',
+        emoji: '😵',
+        pos: 'adj.',
+        thai: 'หมดสติ / ไม่รู้สึกตัว',
+        example: 'The driver is unconscious, so please send help fast.'
+      },
+      {
+        word: 'bleeding',
+        emoji: '🩸',
+        pos: 'adj./n.',
+        thai: 'เลือดออก',
+        example: 'His right leg is bleeding heavily after the fall.'
+      },
+      {
+        word: 'injured',
+        emoji: '🤕',
+        pos: 'adj.',
+        thai: 'ได้รับบาดเจ็บ',
+        example: 'Two passengers were injured in the car accident.'
+      },
+      {
+        word: 'landmark',
+        emoji: '🏛️',
+        pos: 'n.',
+        thai: 'จุดสังเกตสำคัญ',
+        example: 'The central bus station is a clear landmark nearby.'
+      },
+      {
+        word: 'location',
+        emoji: '📍',
+        pos: 'n.',
+        thai: 'สถานที่เกิดเหตุ',
+        example: 'Please tell the operator your exact location.'
+      },
+      {
+        word: 'first aid',
+        emoji: '🩹',
+        pos: 'n.',
+        thai: 'การปฐมพยาบาลเบื้องต้น',
+        example: 'Knowing basic first aid can save a person’s life.'
+      },
+      {
+        word: 'fire brigade',
+        emoji: '🚒',
+        pos: 'n.',
+        thai: 'หน่วยดับเพลิง',
+        example: 'They called the fire brigade when smoke filled the kitchen.'
+      },
+      {
+        word: 'breathing',
+        emoji: '🫁',
+        pos: 'n./adj.',
+        thai: 'การหายใจ / หายใจอยู่',
+        example: 'Check if the victim is still breathing normally.'
+      },
+      {
+        word: 'stay calm',
+        emoji: '🧘',
+        pos: 'v. phr.',
+        thai: 'ตั้งสติ / สงบสติอารมณ์',
+        example: 'Please stay calm and answer the operator’s questions.'
+      }
+    ];
+
+    const DISTRACTOR_WORDS = [
+      'delicious', 'vacation', 'homework', 'umbrella',
+      'butterfly', 'furniture', 'pineapple', 'magazine',
+      'calendar', 'birthday', 'telescope', 'sandwich'
+    ];
+
+    const SAMPLE_DIALOGUE = [
+      {
+        speaker: 'Operator',
+        en: 'Emergency services, 1669. Which service do you require?',
+        th: 'ศูนย์บริการฉุกเฉิน 1669 ต้องการติดต่อหน่วยงานใดครับ?',
+        pitch: 0.92,
+        rate: 0.95
+      },
+      {
+        speaker: 'Caller',
+        en: 'Please send an ambulance immediately! There has been a motorcycle accident.',
+        th: 'กรุณาส่งรถพยาบาลมาทันทีเลยค่ะ! เกิดอุบัติเหตุรถจักรยานยนต์ขึ้น',
+        pitch: 1.15,
+        rate: 1.02
+      },
+      {
+        speaker: 'Operator',
+        en: 'Stay calm. Where is your exact location? Is there a landmark nearby?',
+        th: 'ตั้งสติก่อนนะครับ สถานที่เกิดเหตุอยู่ที่ไหนแน่ชัด มีจุดสังเกตใกล้เคียงไหมครับ?',
+        pitch: 0.92,
+        rate: 0.95
+      },
+      {
+        speaker: 'Caller',
+        en: 'We are on Mittraphap Road, right in front of the main bus station.',
+        th: 'พวกเราอยู่บนถนนมิตรภาพ ด้านหน้าสถานีขนส่งหลักพอดีค่ะ',
+        pitch: 1.15,
+        rate: 0.98
+      },
+      {
+        speaker: 'Operator',
+        en: 'Okay. Is the injured person conscious and breathing?',
+        th: 'รับทราบครับ ผู้ได้รับบาดเจ็บยังมีสติและหายใจอยู่หรือไม่ครับ?',
+        pitch: 0.92,
+        rate: 0.95
+      },
+      {
+        speaker: 'Caller',
+        en: 'Yes, she is awake, but her leg is bleeding and she cannot stand up.',
+        th: 'ค่ะ เธอยังรู้สึกตัว แต่ขาของเธอมีเลือดออกและลุกยืนไม่ไหวค่ะ',
+        pitch: 1.15,
+        rate: 0.98
+      },
+      {
+        speaker: 'Operator',
+        en: 'An ambulance is on the way. Do not move her, and please stay on the line.',
+        th: 'รถพยาบาลกำลังเดินทางไปครับ อย่าเคลื่อนย้ายเธอ และกรุณาถือสายรอสักครู่นะครับ',
+        pitch: 0.92,
+        rate: 0.94
+      }
+    ];
+
+    const OPERATOR_EXPRESSIONS = [
+      { en: 'Emergency services. Which service do you require?', th: 'ศูนย์บริการฉุกเฉิน ต้องการติดต่อหน่วยงานใดครับ/คะ' },
+      { en: 'What is your exact location?', th: 'สถานที่เกิดเหตุของคุณอยู่ที่ไหนแน่ชัด' },
+      { en: 'Is there a landmark near the scene?', th: 'มีจุดสังเกตสำคัญใกล้กับจุดเกิดเหตุหรือไม่' },
+      { en: 'Is the victim conscious and breathing?', th: 'ผู้ประสบเหตุยังมีสติและหายใจอยู่หรือไม่' },
+      { en: 'Please stay calm and stay on the line.', th: 'กรุณาตั้งสติและถือสายรอสักครู่' }
+    ];
+
+    const CALLER_EXPRESSIONS = [
+      { en: 'Please send an ambulance immediately!', th: 'กรุณาส่งรถพยาบาลมาทันทีเลยครับ/ค่ะ' },
+      { en: 'There has been a serious car accident.', th: 'เกิดอุบัติเหตุทางรถยนต์อย่างร้ายแรงขึ้น' },
+      { en: 'We need the fire brigade right away!', th: 'พวกเราต้องการหน่วยดับเพลิงโดยด่วน!' },
+      { en: 'Someone is badly injured and bleeding.', th: 'มีคนได้รับบาดเจ็บสาหัสและเลือดออก' },
+      { en: 'The victim is unconscious near the school gate.', th: 'ผู้ประสบเหตุหมดสติอยู่ใกล้ประตูโรงเรียน' }
+    ];
+
+    /* ==========================================================
+       3. RENDER TAB 1: KNOWLEDGE CONTENT
+       ========================================================== */
+    let isPlayingFullDialogue = false;
+
+    function renderKnowledgeTab() {
+      // Render Dialogue Lines
+      const dialogueContainer = document.getElementById('dialogue-lines-container');
+      dialogueContainer.innerHTML = SAMPLE_DIALOGUE.map((line, idx) => {
+        const isOp = line.speaker === 'Operator';
+        return `
+          <div id="dialogue-row-${idx}" class="p-3.5 sm:p-4 rounded-2xl border-2 transition-all flex items-start justify-between gap-3 ${
+            isOp ? 'bg-blue-50/80 border-blue-200' : 'bg-crimson-50/80 border-crimson-200'
+          }">
+            <div class="flex items-start gap-3">
+              <span class="px-2.5 py-1 rounded-xl text-xs font-bold text-white shrink-0 mt-0.5 ${
+                isOp ? 'bg-blue-700' : 'bg-crimson-600'
+              }">
+                ${isOp ? '🎧 Operator' : '📱 Caller'}
+              </span>
+              <div>
+                <p class="font-bold text-navy-900 text-sm sm:text-base leading-snug">${line.en}</p>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">${line.th}</p>
+              </div>
+            </div>
+            <button onclick="playSingleDialogueLine(${idx})" type="button" title="ฟังประโยคนี้"
+              class="w-10 h-10 rounded-xl bg-white hover:bg-amber-100 border border-slate-300 text-navy-900 flex items-center justify-center text-lg shadow-sm shrink-0 active:scale-90 transition">
+              🔊
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      // Render 12 Uniform White Vocabulary Cards
+      const vocabGrid = document.getElementById('vocab-cards-grid');
+      vocabGrid.innerHTML = LESSON_VOCAB.map((item, idx) => `
+        <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-md border-2 border-slate-200 hover:border-crimson-400 transition flex flex-col justify-between h-full">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2.5">
+                <span class="text-3xl">${item.emoji}</span>
+                <div>
+                  <h3 class="text-lg sm:text-xl font-bold text-navy-900 leading-tight">${item.word}</h3>
+                  <span class="inline-block text-xs font-semibold text-crimson-700 bg-crimson-50 px-2 py-0.5 rounded-md">${item.pos}</span>
+                </div>
+              </div>
+              <!-- Speaker Button #1: Word Pronunciation -->
+              <button onclick="speakEnglish('${item.word.replace(/'/g, "\\'")}')" type="button"
+                class="px-3 py-2 rounded-xl bg-navy-900 hover:bg-crimson-600 text-white text-xs font-bold flex items-center gap-1 shadow-sm active:scale-95 transition shrink-0"
+                title="ฟังเสียงคำศัพท์">
+                <span>🔊</span>
+                <span>คำศัพท์</span>
+              </button>
+            </div>
+            <p class="text-base font-bold text-blue-800 mt-2 mb-3">
+              ความหมาย: <span class="text-slate-800">${item.thai}</span>
+            </p>
+          </div>
+
+          <!-- Example Sentence Box with Speaker Button #2 -->
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-center justify-between gap-2.5 mt-auto">
+            <p class="text-xs sm:text-sm text-slate-700 italic leading-relaxed">
+              "${item.example}"
+            </p>
+            <button onclick="speakEnglish('${item.example.replace(/'/g, "\\'")}')" type="button"
+              class="w-9 h-9 rounded-xl bg-amber-400 hover:bg-amber-300 text-navy-950 flex items-center justify-center text-base shadow-sm shrink-0 active:scale-90 transition"
+              title="ฟังประโยคตัวอย่าง">
+              🔊
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      // Render Useful Expressions
+      document.getElementById('operator-expressions-list').innerHTML = OPERATOR_EXPRESSIONS.map(exp => `
+        <div class="bg-white rounded-xl p-3 border border-blue-200 flex items-center justify-between gap-3 shadow-xs">
+          <div>
+            <p class="font-bold text-navy-900 text-sm">${exp.en}</p>
+            <p class="text-xs text-slate-600 mt-0.5">${exp.th}</p>
+          </div>
+          <button onclick="speakEnglish('${exp.en.replace(/'/g, "\\'")}')" type="button"
+            class="w-9 h-9 rounded-xl bg-blue-700 hover:bg-blue-600 text-white flex items-center justify-center text-base shrink-0 active:scale-90 transition">
+            🔊
+          </button>
+        </div>
+      `).join('');
+
+      document.getElementById('caller-expressions-list').innerHTML = CALLER_EXPRESSIONS.map(exp => `
+        <div class="bg-white rounded-xl p-3 border border-crimson-200 flex items-center justify-between gap-3 shadow-xs">
+          <div>
+            <p class="font-bold text-navy-900 text-sm">${exp.en}</p>
+            <p class="text-xs text-slate-600 mt-0.5">${exp.th}</p>
+          </div>
+          <button onclick="speakEnglish('${exp.en.replace(/'/g, "\\'")}')" type="button"
+            class="w-9 h-9 rounded-xl bg-crimson-600 hover:bg-crimson-500 text-white flex items-center justify-center text-base shrink-0 active:scale-90 transition">
+            🔊
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function updateDialogueHighlight(activeIndex) {
+      SAMPLE_DIALOGUE.forEach((_, idx) => {
+        const row = document.getElementById(`dialogue-row-${idx}`);
+        if (!row) return;
+        if (idx === activeIndex) {
+          row.classList.add('ring-4', 'ring-amber-400', 'scale-[1.01]');
+        } else {
+          row.classList.remove('ring-4', 'ring-amber-400', 'scale-[1.01]');
+        }
+      });
+    }
+
+    function playSingleDialogueLine(idx) {
+      stopSpeech();
+      const line = SAMPLE_DIALOGUE[idx];
+      updateDialogueHighlight(idx);
+      speakEnglish(line.en, {
+        pitch: line.pitch,
+        rate: line.rate,
+        onend: () => updateDialogueHighlight(-1),
+        onerror: () => updateDialogueHighlight(-1)
+      });
+    }
+
+    function playFullDialogue() {
+      if (!globalSoundEnabled) {
+        showToast('🔇 กรุณากดเปิดเสียงที่มุมขวาบนก่อนเล่นบทสนทนาครับ', '🔇');
+        return;
+      }
+      stopSpeech();
+      isPlayingFullDialogue = true;
+      document.getElementById('play-full-dialogue-btn').classList.add('hidden');
+      document.getElementById('stop-dialogue-btn').classList.remove('hidden');
+
+      let currentIdx = 0;
+      function speakNext() {
+        if (!isPlayingFullDialogue || currentIdx >= SAMPLE_DIALOGUE.length) {
+          stopSpeech();
+          return;
+        }
+        const line = SAMPLE_DIALOGUE[currentIdx];
+        updateDialogueHighlight(currentIdx);
+        speakEnglish(line.en, {
+          pitch: line.pitch,
+          rate: line.rate,
+          silentIfMuted: true,
+          onend: () => {
+            currentIdx++;
+            setTimeout(speakNext, 250);
+          },
+          onerror: () => stopSpeech()
+        });
+      }
+      speakNext();
+    }
+
+    /* ==========================================================
+       4. TAB 2: VOCABULARY ARCADE GAME (9:16 CANVAS - 1669 RESCUE RUN)
+       ========================================================== */
+    const canvas = document.getElementById('game-canvas');
+    const ctx = canvas.getContext('2d');
+    const HIGHSCORE_STORAGE_KEY = 'kru_narin_m3_u1_l6_highscore';
+
+    const gameState = {
+      mode: 1, // 1 = แยกหมวดคำศัพท์ในบทเรียน, 2 = แปลตามสั่ง x3
+      running: false,
+      paused: false,
+      score: 0,
+      highScore: parseInt(localStorage.getItem(HIGHSCORE_STORAGE_KEY) || '0', 10),
+      hearts: 3,
+      timeLeft: 60,
+      combo: 0,
+      shieldTimer: 0,
+      shakeTimer: 0,
+      roadOffset: 0,
+      lastDirection: 1, // -1 left, 1 right
+      player: {
+        x: 200,
+        y: 555,
+        width: 54,
+        height: 76,
+        baseSpeed: 290
+      },
+      keys: { left: false, right: false },
+      items: [],
+      particles: [],
+      floatingTexts: [],
+      caughtWords: new Set(),
+      mode2Target: null,
+      spawnTimer: 0,
+      lastFrameTime: 0,
+      secondAccumulator: 0
+    };
+
+    document.getElementById('hud-highscore').textContent = gameState.highScore;
+
+    function setGameMode(modeNum) {
+      gameState.mode = modeNum;
+      const b1 = document.getElementById('game-mode-1-btn');
+      const b2 = document.getElementById('game-mode-2-btn');
+      const banner = document.getElementById('mode2-mission-banner');
+      const desc = document.getElementById('game-mode-desc');
+
+      if (modeNum === 1) {
+        b1.className = 'py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition bg-crimson-600 text-white shadow';
+        b2.className = 'py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition text-slate-700 hover:bg-white';
+        banner.classList.add('hidden');
+        desc.innerHTML = '<strong>โหมด 1:</strong> เก็บคำศัพท์ในบทเรียน 12 คำ (+10 คะแนน) และหลบคำศัพท์นอกบทเรียนหรือกรวยจราจร (🚧)';
+      } else {
+        b2.className = 'py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition bg-amber-500 text-navy-950 shadow';
+        b1.className = 'py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition text-slate-700 hover:bg-white';
+        banner.classList.remove('hidden');
+        desc.innerHTML = '<strong>โหมด 2 (แปลตามสั่ง x3):</strong> อ่านคำแปลภาษาไทยด้านบน แล้วขับรถรับคำศัพท์ภาษาอังกฤษให้ตรงกัน รับโบนัส <strong>+50 คะแนน!</strong>';
+        pickNewMode2Target();
+      }
+
+      if (gameState.running) {
+        startGame();
+      }
+    }
+
+    function pickNewMode2Target() {
+      const candidates = LESSON_VOCAB.filter(v => !gameState.mode2Target || v.word !== gameState.mode2Target.word);
+      const chosen = candidates[Math.floor(Math.random() * candidates.length)];
+      gameState.mode2Target = chosen;
+      document.getElementById('mode2-thai-target').textContent = chosen.thai;
+    }
+
+    function startGame() {
+      ensureAudioContext();
+      gameState.running = true;
+      gameState.paused = false;
+      gameState.score = 0;
+      gameState.hearts = 3;
+      gameState.timeLeft = 60;
+      gameState.combo = 0;
+      gameState.shieldTimer = 0;
+      gameState.shakeTimer = 0;
+      gameState.player.x = 200;
+      gameState.items = [];
+      gameState.particles = [];
+      gameState.floatingTexts = [];
+      gameState.caughtWords.clear();
+      gameState.spawnTimer = 0.2;
+      gameState.secondAccumulator = 0;
+      gameState.lastFrameTime = performance.now();
+
+      if (gameState.mode === 2) {
+        document.getElementById('mode2-mission-banner').classList.remove('hidden');
+        pickNewMode2Target();
+      }
+
+      document.getElementById('game-start-overlay').classList.add('hidden');
+      document.getElementById('game-over-overlay').classList.add('hidden');
+      updateGameHud();
+      requestAnimationFrame(gameLoop);
+    }
+
+    function pauseGame() {
+      gameState.running = false;
+    }
+
+    function updateGameHud() {
+      // Hearts
+      const fullHearts = Math.max(0, gameState.hearts);
+      const emptyHearts = Math.max(0, 3 - fullHearts);
+      document.getElementById('hud-hearts').textContent = '❤️'.repeat(fullHearts) + '🖤'.repeat(emptyHearts);
+
+      // Timer & Score
+      document.getElementById('hud-timer').textContent = `${Math.ceil(gameState.timeLeft)}s`;
+      document.getElementById('hud-score').textContent = gameState.score;
+      document.getElementById('hud-highscore').textContent = gameState.highScore;
+
+      // Combo Badge (COMBO x2 up to 🔥 FEVER x5!)
+      const comboBadge = document.getElementById('hud-combo-badge');
+      if (gameState.combo >= 2) {
+        const mult = Math.min(5, gameState.combo);
+        comboBadge.classList.remove('invisible');
+        if (mult >= 5) {
+          comboBadge.textContent = '🔥 FEVER x5!';
+          comboBadge.className = 'px-3 py-1 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-crimson-600 text-navy-950 text-xs sm:text-sm font-extrabold shadow-md animate-bounce';
+        } else {
+          comboBadge.textContent = `COMBO x${mult}`;
+          comboBadge.className = 'px-3 py-1 rounded-full bg-gradient-to-r from-orange-500 to-crimson-600 text-white text-xs sm:text-sm font-bold shadow';
+        }
+      } else {
+        comboBadge.classList.add('invisible');
+      }
+
+      // Shield Badge
+      const shieldBadge = document.getElementById('hud-shield-badge');
+      if (gameState.shieldTimer > 0) {
+        shieldBadge.classList.remove('hidden');
+        shieldBadge.textContent = `⭐ SHIELD: ${gameState.shieldTimer.toFixed(1)}s (1.25x)`;
+      } else {
+        shieldBadge.classList.add('hidden');
+      }
+    }
+
+    function triggerTurboDash() {
+      if (!gameState.running) return;
+      ensureAudioContext();
+      const dir = gameState.keys.left ? -1 : gameState.keys.right ? 1 : gameState.lastDirection;
+      const oldX = gameState.player.x;
+      gameState.player.x = Math.max(46, Math.min(354, gameState.player.x + dir * 75));
+      playSfx('dash');
+
+      // Spawn cyan dash particles along trail
+      for (let i = 0; i < 16; i++) {
+        const t = i / 16;
+        gameState.particles.push({
+          x: oldX + (gameState.player.x - oldX) * t + (Math.random() - 0.5) * 24,
+          y: gameState.player.y + (Math.random() - 0.5) * 40,
+          vx: (Math.random() - 0.5) * 90,
+          vy: (Math.random() - 0.5) * 90 + 40,
+          size: 4 + Math.random() * 5,
+          color: i % 2 === 0 ? '#22D3EE' : '#67E8F9',
+          life: 0.45
+        });
+      }
+      addFloatingText(gameState.player.x, gameState.player.y - 45, '⚡ TURBO!', '#22D3EE');
+    }
+
+    function addFloatingText(x, y, text, color) {
+      gameState.floatingTexts.push({
+        x,
+        y,
+        text,
+        color,
+        life: 0.95
+      });
+    }
+
+    function spawnParticles(x, y, color, count = 12) {
+      for (let i = 0; i < count; i++) {
+        const angle = (Math.PI * 2 * i) / count + Math.random() * 0.4;
+        const speed = 60 + Math.random() * 140;
+        gameState.particles.push({
+          x,
+          y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          size: 4 + Math.random() * 4,
+          color,
+          life: 0.5
+        });
+      }
+    }
+
+    function spawnFallingEntity() {
+      const lanes = [68, 156, 244, 332];
+      const x = lanes[Math.floor(Math.random() * lanes.length)];
+      const roll = Math.random();
+
+      // 13% chance for Power-up: ⭐ SHIELD, ⏰ +7s, 💖 HEAL
+      if (roll < 0.13) {
+        const pRoll = Math.random();
+        let pType = 'shield';
+        let label = '⭐ SHIELD';
+        let bg = '#F59E0B';
+        if (pRoll < 0.36) {
+          pType = 'shield';
+          label = '⭐ SHIELD';
+          bg = '#F59E0B';
+        } else if (pRoll < 0.70) {
+          pType = 'time';
+          label = '⏰ +7s';
+          bg = '#0284C7';
+        } else {
+          pType = 'heal';
+          label = '💖 HEAL';
+          bg = '#DB2777';
+        }
+        gameState.items.push({
+          kind: 'powerup',
+          powerType: pType,
+          text: label,
+          bg,
+          x,
+          y: -30,
+          w: 96,
+          h: 36,
+          vy: 165 + Math.random() * 45
+        });
+        return;
+      }
+
+      // 22% chance for Traffic Cone obstacle 🚧
+      if (roll < 0.35) {
+        gameState.items.push({
+          kind: 'cone',
+          text: '🚧',
+          x,
+          y: -30,
+          w: 48,
+          h: 44,
+          vy: 175 + Math.random() * 55
+        });
+        return;
+      }
+
+      // Word Item (depends on Mode 1 vs Mode 2)
+      if (gameState.mode === 1) {
+        const isLesson = Math.random() < 0.56;
+        if (isLesson) {
+          const v = LESSON_VOCAB[Math.floor(Math.random() * LESSON_VOCAB.length)];
+          gameState.items.push({
+            kind: 'lesson_word',
+            word: v.word,
+            thai: v.thai,
+            text: v.word,
+            x,
+            y: -30,
+            w: Math.max(96, v.word.length * 11 + 24),
+            h: 38,
+            vy: 155 + Math.random() * 50
+          });
+        } else {
+          const dw = DISTRACTOR_WORDS[Math.floor(Math.random() * DISTRACTOR_WORDS.length)];
+          gameState.items.push({
+            kind: 'wrong_word',
+            text: dw,
+            x,
+            y: -30,
+            w: Math.max(94, dw.length * 11 + 22),
+            h: 38,
+            vy: 160 + Math.random() * 50
+          });
+        }
+      } else {
+        // Mode 2: แปลตามสั่ง x3
+        // 48% chance to spawn the current Thai target English word, 52% chance other words
+        const spawnTarget = Math.random() < 0.48 && gameState.mode2Target;
+        if (spawnTarget) {
+          const v = gameState.mode2Target;
+          gameState.items.push({
+            kind: 'lesson_word',
+            word: v.word,
+            thai: v.thai,
+            text: v.word,
+            x,
+            y: -30,
+            w: Math.max(96, v.word.length * 11 + 24),
+            h: 38,
+            vy: 150 + Math.random() * 45
+          });
+        } else {
+          const pool = [
+            ...LESSON_VOCAB.filter(v => !gameState.mode2Target || v.word !== gameState.mode2Target.word).map(v => v.word),
+            ...DISTRACTOR_WORDS
+          ];
+          const w = pool[Math.floor(Math.random() * pool.length)];
+          gameState.items.push({
+            kind: 'wrong_word',
+            text: w,
+            x,
+            y: -30,
+            w: Math.max(94, w.length * 11 + 22),
+            h: 38,
+            vy: 155 + Math.random() * 45
+          });
+        }
+      }
+    }
+
+    function handleDamageOrShield(item) {
+      if (gameState.shieldTimer > 0) {
+        playSfx('shield_hit');
+        spawnParticles(item.x, item.y, '#FBBF24', 14);
+        addFloatingText(gameState.player.x, gameState.player.y - 52, '🛡️ BLOCKED!', '#FBBF24');
+        return;
+      }
+      playSfx('bad');
+      gameState.hearts -= 1;
+      gameState.combo = 0;
+      gameState.shakeTimer = 0.28;
+      spawnParticles(gameState.player.x, gameState.player.y, '#EF4444', 16);
+      addFloatingText(gameState.player.x, gameState.player.y - 48, '💥 -1 ❤️', '#EF4444');
+      updateGameHud();
+
+      if (gameState.hearts <= 0) {
+        endGame();
+      }
+    }
+
+    function endGame() {
+      gameState.running = false;
+      if (gameState.score > gameState.highScore) {
+        gameState.highScore = gameState.score;
+        localStorage.setItem(HIGHSCORE_STORAGE_KEY, String(gameState.highScore));
+        document.getElementById('gameover-highscore-msg').textContent = `🎉 สถิติสูงสุดใหม่: ${gameState.highScore} คะแนน!`;
+      } else {
+        document.getElementById('gameover-highscore-msg').textContent = `สถิติสูงสุด: ${gameState.highScore} คะแนน`;
+      }
+      updateGameHud();
+
+      document.getElementById('gameover-score').textContent = `${gameState.score} คะแนน`;
+
+      // Rank badge
+      const rankEl = document.getElementById('gameover-rank-badge');
+      if (gameState.score >= 250) {
+        rankEl.textContent = '🏅 หน่วยกู้ชีพดีเด่น (Master Dispatcher)';
+      } else if (gameState.score >= 120) {
+        rankEl.textContent = '🚑 นักขับรถพยาบาลมือโปร (Rescue Pro)';
+      } else {
+        rankEl.textContent = '🩺 อาสาสมัครกู้ภัยฝึกหัด (Rescue Trainee)';
+      }
+
+      // Interactive list of caught words in that round
+      const caughtArr = Array.from(gameState.caughtWords);
+      document.getElementById('gameover-caught-count').textContent = `${caughtArr.length} คำ`;
+      const wordsWrap = document.getElementById('gameover-caught-words');
+      if (caughtArr.length === 0) {
+        wordsWrap.innerHTML = '<span class="text-xs text-slate-300">ยังไม่มีคำศัพท์ที่เก็บได้ในรอบนี้ ลองใหม่อีกครั้งนะครับ!</span>';
+      } else {
+        wordsWrap.innerHTML = caughtArr.map(w => {
+          const found = LESSON_VOCAB.find(v => v.word === w);
+          const th = found ? found.thai : '';
+          return `
+            <button onclick="speakEnglish('${w.replace(/'/g, "\\'")}')" type="button"
+              class="px-2.5 py-1.5 rounded-xl bg-white hover:bg-amber-200 text-navy-950 text-xs font-bold shadow flex items-center gap-1 transition active:scale-95">
+              <span>🔊</span>
+              <span>${w}</span>
+              <span class="text-crimson-700 font-normal">(${th})</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      document.getElementById('game-over-overlay').classList.remove('hidden');
+    }
+
+    function gameLoop(now) {
+      if (!gameState.running) return;
+      const dt = Math.min(0.05, (now - gameState.lastFrameTime) / 1000);
+      gameState.lastFrameTime = now;
+
+      // Countdown Timer
+      gameState.timeLeft -= dt;
+      if (gameState.timeLeft <= 0) {
+        gameState.timeLeft = 0;
+        updateGameHud();
+        endGame();
+        return;
+      }
+
+      // Shield Timer
+      if (gameState.shieldTimer > 0) {
+        gameState.shieldTimer = Math.max(0, gameState.shieldTimer - dt);
+      }
+
+      // Shake Timer
+      if (gameState.shakeTimer > 0) {
+        gameState.shakeTimer = Math.max(0, gameState.shakeTimer - dt);
+      }
+
+      // Update HUD every 0.1s smoothly
+      gameState.secondAccumulator += dt;
+      if (gameState.secondAccumulator >= 0.1) {
+        gameState.secondAccumulator = 0;
+        updateGameHud();
+      }
+
+      // Player Movement (1.25x speed when SHIELD is active)
+      const speedMult = gameState.shieldTimer > 0 ? 1.25 : 1.0;
+      const moveSpeed = gameState.player.baseSpeed * speedMult;
+      if (gameState.keys.left) {
+        gameState.player.x -= moveSpeed * dt;
+        gameState.lastDirection = -1;
+      }
+      if (gameState.keys.right) {
+        gameState.player.x += moveSpeed * dt;
+        gameState.lastDirection = 1;
+      }
+      gameState.player.x = Math.max(46, Math.min(354, gameState.player.x));
+
+      // Road scrolling
+      gameState.roadOffset = (gameState.roadOffset + (260 * speedMult) * dt) % 64;
+
+      // Spawn falling entities
+      gameState.spawnTimer -= dt;
+      if (gameState.spawnTimer <= 0) {
+        spawnFallingEntity();
+        gameState.spawnTimer = Math.max(0.62, 1.08 - (60 - gameState.timeLeft) * 0.006);
+      }
+
+      // Update & Check Collisions for Items
+      const px = gameState.player.x;
+      const py = gameState.player.y;
+      const pw = gameState.player.width;
+      const ph = gameState.player.height;
+
+      for (let i = gameState.items.length - 1; i >= 0; i--) {
+        const it = gameState.items[i];
+        it.y += it.vy * dt;
+
+        // AABB Collision check
+        const hit =
+          Math.abs(px - it.x) < (pw + it.w) * 0.44 &&
+          Math.abs(py - it.y) < (ph + it.h) * 0.44;
+
+        if (hit) {
+          if (it.kind === 'powerup') {
+            if (it.powerType === 'shield') {
+              gameState.shieldTimer = 6.0;
+              playSfx('bonus');
+              spawnParticles(it.x, it.y, '#FBBF24', 15);
+              addFloatingText(px, py - 52, '⭐ SHIELD 6s!', '#FBBF24');
+            } else if (it.powerType === 'time') {
+              gameState.timeLeft = Math.min(99, gameState.timeLeft + 7);
+              playSfx('bonus');
+              spawnParticles(it.x, it.y, '#38BDF8', 15);
+              addFloatingText(px, py - 52, '⏰ +7 SECONDS!', '#38BDF8');
+            } else if (it.powerType === 'heal') {
+              playSfx('bonus');
+              spawnParticles(it.x, it.y, '#F472B6', 15);
+              if (gameState.hearts < 3) {
+                gameState.hearts += 1;
+                addFloatingText(px, py - 52, '💖 +1 HEART!', '#F472B6');
+              } else {
+                gameState.score += 25;
+                addFloatingText(px, py - 52, '💖 MAX +25 PTS!', '#F472B6');
+              }
+            }
+            updateGameHud();
+          } else if (it.kind === 'cone') {
+            handleDamageOrShield(it);
+          } else if (it.kind === 'lesson_word') {
+            gameState.combo += 1;
+            const mult = Math.min(5, gameState.combo);
+            gameState.caughtWords.add(it.word);
+
+            if (gameState.mode === 1) {
+              const pts = 10 + (mult - 1) * 5;
+              gameState.score += pts;
+              playSfx('good', gameState.combo);
+              spawnParticles(it.x, it.y, '#10B981', 14);
+              addFloatingText(px, py - 48, `+${pts} (${it.word})`, '#34D399');
+            } else {
+              // Mode 2: Matched target!
+              const pts = 50 + (mult - 1) * 10;
+              gameState.score += pts;
+              playSfx('bonus');
+              spawnParticles(it.x, it.y, '#FBBF24', 20);
+              addFloatingText(px, py - 52, `🎯 +${pts} PERFECT!`, '#FDE047');
+              pickNewMode2Target();
+            }
+            speakEnglish(it.word, { silentIfMuted: true, rate: 1.05 });
+            updateGameHud();
+          } else if (it.kind === 'wrong_word') {
+            handleDamageOrShield(it);
+          }
+
+          gameState.items.splice(i, 1);
+          continue;
+        }
+
+        if (it.y > 680) {
+          gameState.items.splice(i, 1);
+        }
+      }
+
+      // Update Particles & Floating Texts
+      for (let i = gameState.particles.length - 1; i >= 0; i--) {
+        const p = gameState.particles[i];
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        p.life -= dt;
+        if (p.life <= 0) gameState.particles.splice(i, 1);
+      }
+      for (let i = gameState.floatingTexts.length - 1; i >= 0; i--) {
+        const ft = gameState.floatingTexts[i];
+        ft.y -= 45 * dt;
+        ft.life -= dt;
+        if (ft.life <= 0) gameState.floatingTexts.splice(i, 1);
+      }
+
+      drawGameScene(now);
+      requestAnimationFrame(gameLoop);
+    }
+
+    function drawRoundedRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    function drawGameScene(now) {
+      ctx.save();
+
+      // Screen shake on crash
+      if (gameState.shakeTimer > 0) {
+        const mag = 7 * (gameState.shakeTimer / 0.28);
+        ctx.translate((Math.random() - 0.5) * mag * 2, (Math.random() - 0.5) * mag * 2);
+      }
+
+      // Highway Asphalt Background
+      ctx.fillStyle = '#1E293B';
+      ctx.fillRect(0, 0, 400, 640);
+
+      // Left & Right Emergency Shoulders (Red/White Curb)
+      ctx.fillStyle = '#0F172A';
+      ctx.fillRect(0, 0, 22, 640);
+      ctx.fillRect(378, 0, 22, 640);
+      for (let y = -64 + gameState.roadOffset; y < 640; y += 64) {
+        ctx.fillStyle = '#DC2626';
+        ctx.fillRect(14, y, 8, 32);
+        ctx.fillRect(378, y, 8, 32);
+        ctx.fillStyle = '#F8FAFC';
+        ctx.fillRect(14, y + 32, 8, 32);
+        ctx.fillRect(378, y + 32, 8, 32);
+      }
+
+      // Dashed Lane Dividers (4 lanes)
+      ctx.strokeStyle = 'rgba(248, 250, 252, 0.35)';
+      ctx.lineWidth = 3;
+      ctx.setLineDash([28, 36]);
+      ctx.lineDashOffset = -gameState.roadOffset;
+      [112, 200, 288].forEach(lx => {
+        ctx.beginPath();
+        ctx.moveTo(lx, 0);
+        ctx.lineTo(lx, 640);
+        ctx.stroke();
+      });
+      ctx.setLineDash([]);
+
+      // Draw Falling Items
+      gameState.items.forEach(it => {
+        if (it.kind === 'cone') {
+          ctx.font = '34px Mali, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('🚧', it.x, it.y);
+        } else if (it.kind === 'powerup') {
+          drawRoundedRect(ctx, it.x - it.w / 2, it.y - it.h / 2, it.w, it.h, 12);
+          ctx.fillStyle = it.bg;
+          ctx.fill();
+          ctx.lineWidth = 2.5;
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.stroke();
+
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = 'bold 13px Mali, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(it.text, it.x, it.y + 1);
+        } else {
+          // Word Pill (Crisp white card with Navy/Crimson border so player reads carefully)
+          drawRoundedRect(ctx, it.x - it.w / 2, it.y - it.h / 2, it.w, it.h, 12);
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fill();
+          ctx.lineWidth = 3;
+          ctx.strokeStyle = gameState.mode === 2 ? '#0284C7' : '#0F172A';
+          ctx.stroke();
+
+          ctx.fillStyle = '#0F172A';
+          ctx.font = 'bold 15px Mali, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(it.text, it.x, it.y + 1);
+        }
+      });
+
+      // Draw Player Ambulance (🚑)
+      const px = gameState.player.x;
+      const py = gameState.player.y;
+
+      // Golden Shield Ring if SHIELD power-up active
+      if (gameState.shieldTimer > 0) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(px, py, 48 + Math.sin(now * 0.015) * 3, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.22)';
+        ctx.fill();
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#FBBF24';
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // Ambulance Body Illustration + Emoji
+      drawRoundedRect(ctx, px - 25, py - 36, 50, 72, 12);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = '#DC2626';
+      ctx.stroke();
+
+      // Red Cross on Roof
+      ctx.fillStyle = '#DC2626';
+      ctx.fillRect(px - 4, py - 12, 8, 22);
+      ctx.fillRect(px - 11, py - 5, 22, 8);
+
+      // Flashing Siren Lights on Ambulance
+      const flashRed = Math.floor(now / 140) % 2 === 0;
+      ctx.fillStyle = flashRed ? '#EF4444' : '#3B82F6';
+      ctx.beginPath();
+      ctx.arc(px - 12, py - 24, 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = flashRed ? '#3B82F6' : '#EF4444';
+      ctx.beginPath();
+      ctx.arc(px + 12, py - 24, 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Draw Particles
+      gameState.particles.forEach(p => {
+        ctx.globalAlpha = Math.max(0, p.life * 2);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+
+      // Draw Floating Score / Status Popups
+      gameState.floatingTexts.forEach(ft => {
+        ctx.globalAlpha = Math.min(1, ft.life * 1.4);
+        ctx.font = 'bold 16px Mali, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#0F172A';
+        ctx.strokeText(ft.text, ft.x, ft.y);
+        ctx.fillStyle = ft.color;
+        ctx.fillText(ft.text, ft.x, ft.y);
+      });
+      ctx.globalAlpha = 1;
+
+      ctx.restore();
+    }
+
+    // Bind Arcade Touch/Mouse & Keyboard Controls
+    function bindArcadeControls() {
+      const btnLeft = document.getElementById('ctrl-left');
+      const btnRight = document.getElementById('ctrl-right');
+      const btnTurbo = document.getElementById('ctrl-turbo');
+
+      const setLeft = (val) => {
+        gameState.keys.left = val;
+        btnLeft.classList.toggle('is-pressed', val);
+      };
+      const setRight = (val) => {
+        gameState.keys.right = val;
+        btnRight.classList.toggle('is-pressed', val);
+      };
+
+      ['mousedown', 'touchstart'].forEach(ev => {
+        btnLeft.addEventListener(ev, (e) => { e.preventDefault(); setLeft(true); }, { passive: false });
+        btnRight.addEventListener(ev, (e) => { e.preventDefault(); setRight(true); }, { passive: false });
+        btnTurbo.addEventListener(ev, (e) => {
+          e.preventDefault();
+          btnTurbo.classList.add('is-pressed');
+          triggerTurboDash();
+        }, { passive: false });
+      });
+
+      ['mouseup', 'mouseleave', 'touchend', 'touchcancel'].forEach(ev => {
+        btnLeft.addEventListener(ev, () => setLeft(false));
+        btnRight.addEventListener(ev, () => setRight(false));
+        btnTurbo.addEventListener(ev, () => btnTurbo.classList.remove('is-pressed'));
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (!gameState.running) return;
+        if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+          setLeft(true);
+        } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+          setRight(true);
+        } else if (e.key === ' ' || e.key === 'Shift') {
+          e.preventDefault();
+          triggerTurboDash();
+        }
+      });
+
+      window.addEventListener('keyup', (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+          setLeft(false);
+        } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+          setRight(false);
+        }
+      });
+    }
+
+    /* ==========================================================
+       5. TAB 3: EXERCISE (SHUFFLED 2 PARTS + NON-SPOILING SCORE MODAL)
+       ========================================================== */
+    const EXERCISE_PART1_BANK = [
+      {
+        id: 'p1_1',
+        question: 'When the 1669 operator asks "What is your exact location?", what information should you give?',
+        options: [
+          'The street name and a clear landmark near the accident',
+          'Your favorite school subject and hobbies',
+          'The price of the motorcycle involved in the crash',
+          'The weather forecast for tomorrow morning'
+        ],
+        answerIndex: 0
+      },
+      {
+        id: 'p1_2',
+        question: 'Which emergency service should you request if there is a big fire in a building?',
+        options: [
+          'The fire brigade',
+          'A library tour guide',
+          'A school bus driver',
+          'A weather reporter'
+        ],
+        answerIndex: 0
+      },
+      {
+        id: 'p1_3',
+        question: 'The victim fell off his bike and does not wake up when you call his name. He is ________.',
+        options: [
+          'unconscious',
+          'delicious',
+          'careful',
+          'sunny'
+        ],
+        answerIndex: 0
+      },
+      {
+        id: 'p1_4',
+        question: 'What does the operator mean by saying "Please stay on the line"?',
+        options: [
+          'Do not hang up the phone; keep talking until help arrives',
+          'Stand in a straight queue outside the hospital',
+          'Draw a long line on the road with chalk',
+          'Turn off your mobile phone immediately'
+        ],
+        answerIndex: 0
+      },
+      {
+        id: 'p1_5',
+        question: 'In the 5W1H listening strategy, listening for "ACTION" means focusing on ________.',
+        options: [
+          'what the operator tells the caller to do while waiting',
+          'the names of famous movie actors',
+          'how many cars were sold last year',
+          'the color of the operator’s uniform'
+        ],
+        answerIndex: 0
+      }
+    ];
+
+    const EXERCISE_PART2_BANK = [
+      {
+        id: 'p2_1',
+        prompt: '1. If someone is badly hurt in a car crash, call 1669 to ask for an ______________ (รถพยาบาล) immediately.',
+        hint: 'คำใบ้: รถพยาบาล (a _ _ _ _ _ _ _ _)',
+        accepted: ['ambulance', 'an ambulance']
+      },
+      {
+        id: 'p2_2',
+        prompt: '2. Please ______________ (ตั้งสติ) and speak slowly so the operator can understand your address.',
+        hint: 'คำใบ้: ตั้งสติ / สงบสติอารมณ์ (s _ _ _  c _ _ _)',
+        accepted: ['stay calm', 'calm down']
+      },
+      {
+        id: 'p2_3',
+        prompt: '3. The City Library is a famous ______________ (จุดสังเกตสำคัญ) that helps rescue teams find the house fast.',
+        hint: 'คำใบ้: จุดสังเกตสำคัญ (l _ _ _ _ _ _ _)',
+        accepted: ['landmark', 'a landmark']
+      },
+      {
+        id: 'p2_4',
+        prompt: '4. Her arm is ______________ (เลือดออก) heavily, so press a clean cloth onto the wound.',
+        hint: 'คำใบ้: เลือดออก (b _ _ _ _ _ _ _)',
+        accepted: ['bleeding']
+      },
+      {
+        id: 'p2_5',
+        prompt: '5. Learning basic ______________ (การปฐมพยาบาลเบื้องต้น) helps us assist injured people safely before doctors arrive.',
+        hint: 'คำใบ้: การปฐมพยาบาลเบื้องต้น (f _ _ _ _  a _ _)',
+        accepted: ['first aid', 'first-aid']
+      }
+    ];
+
+    let currentPart1 = [];
+    let currentPart2 = [];
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function initExerciseTab() {
+      // Shuffle question order in both parts AND shuffle options in Part 1
+      currentPart1 = shuffleArray(EXERCISE_PART1_BANK).map(q => {
+        const correctText = q.options[q.answerIndex];
+        const shuffledOpts = shuffleArray(q.options);
+        return {
+          ...q,
+          shuffledOptions: shuffledOpts,
+          correctText
+        };
+      });
+
+      currentPart2 = shuffleArray(EXERCISE_PART2_BANK);
+
+      // Render Part 1
+      const p1Container = document.getElementById('exercise-part1-container');
+      p1Container.innerHTML = currentPart1.map((q, idx) => `
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2.5">
+          <p class="font-bold text-navy-900 text-sm sm:text-base">
+            <span class="text-crimson-600">ข้อที่ ${idx + 1}.</span> ${q.question}
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            ${q.shuffledOptions.map((opt, optIdx) => `
+              <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-slate-300 hover:border-crimson-500 cursor-pointer transition text-xs sm:text-sm font-medium">
+                <input type="radio" name="ex_p1_${q.id}" value="${opt.replace(/"/g, '&quot;')}" class="w-4 h-4 accent-crimson-600 shrink-0" />
+                <span>${opt}</span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      // Render Part 2
+      const p2Container = document.getElementById('exercise-part2-container');
+      p2Container.innerHTML = currentPart2.map((q, idx) => {
+        const cleanPrompt = q.prompt.replace(/^\d+\.\s*/, '');
+        return `
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2">
+            <p class="font-bold text-navy-900 text-sm sm:text-base">
+              <span class="text-blue-700">ข้อที่ ${idx + 6}.</span> ${cleanPrompt}
+            </p>
+            <p class="text-xs text-slate-500">${q.hint}</p>
+            <input id="ex_p2_${q.id}" type="text" autocomplete="off" placeholder="พิมพ์คำตอบภาษาอังกฤษที่นี่..."
+              class="w-full sm:w-80 px-3.5 py-2.5 rounded-xl border-2 border-slate-300 focus:border-blue-700 focus:outline-none bg-white text-sm font-bold text-navy-900" />
+          </div>
+        `;
+      }).join('');
+    }
+
+    function submitExercise() {
+      const nameInput = document.getElementById('exercise-student-name');
+      const studentName = nameInput.value.trim();
+
+      if (!studentName) {
+        showToast('กรุณากรอก "ชื่อ-นามสกุล" ก่อนส่งคำตอบครับ', '⚠️');
+        nameInput.focus();
+        nameInput.classList.add('border-crimson-600', 'ring-4', 'ring-crimson-200');
+        setTimeout(() => nameInput.classList.remove('ring-4', 'ring-crimson-200'), 1800);
+        return;
+      }
+
+      let score = 0;
+      const itemResults = [];
+
+      // Grade Part 1 (5 questions)
+      currentPart1.forEach((q, idx) => {
+        const selected = document.querySelector(`input[name="ex_p1_${q.id}"]:checked`);
+        const entered = selected ? selected.value.trim() : '';
+        const isCorrect = entered === q.correctText;
+        if (isCorrect) score += 1;
+
+        itemResults.push({
+          num: idx + 1,
+          part: 'ตอนที่ 1',
+          prompt: q.question,
+          enteredAnswer: entered || '(ไม่ได้เลือกคำตอบ)',
+          isCorrect
+        });
+      });
+
+      // Grade Part 2 (5 questions - trimmed case-insensitive keywords)
+      currentPart2.forEach((q, idx) => {
+        const inputEl = document.getElementById(`ex_p2_${q.id}`);
+        const rawVal = inputEl ? inputEl.value.trim() : '';
+        const normalized = rawVal.toLowerCase().replace(/\s+/g, ' ');
+        const isCorrect = q.accepted.includes(normalized);
+        if (isCorrect) score += 1;
+
+        itemResults.push({
+          num: idx + 6,
+          part: 'ตอนที่ 2',
+          prompt: q.prompt.replace(/^\d+\.\s*/, ''),
+          enteredAnswer: rawVal || '(ไม่ได้กรอกคำตอบ)',
+          isCorrect
+        });
+      });
+
+      // Populate Score Summary Modal (NEVER displaying the correct answer for incorrect items)
+      document.getElementById('modal-student-name').textContent = `นักเรียน: ${studentName}`;
+      document.getElementById('modal-total-score').textContent = score;
+      const statusEl = document.getElementById('modal-score-status');
+      if (score >= 8) {
+        statusEl.textContent = '🌟 ระดับคุณภาพ: ดีมาก (ผ่านเกณฑ์)';
+        statusEl.className = 'text-sm sm:text-base font-bold text-emerald-700 mt-0.5';
+        playSfx('bonus');
+      } else if (score >= 7) {
+        statusEl.textContent = '👍 ระดับคุณภาพ: ดี (ผ่านเกณฑ์)';
+        statusEl.className = 'text-sm sm:text-base font-bold text-blue-700 mt-0.5';
+        playSfx('good', 2);
+      } else {
+        statusEl.textContent = '💪 ระดับคุณภาพ: ควรทบทวนเพิ่มเติม (เกณฑ์ผ่าน 7 คะแนน)';
+        statusEl.className = 'text-sm sm:text-base font-bold text-crimson-700 mt-0.5';
+      }
+
+      const listEl = document.getElementById('modal-results-list');
+      listEl.innerHTML = itemResults.map(res => `
+        <div class="p-3.5 rounded-2xl border-2 ${
+          res.isCorrect ? 'bg-emerald-50/70 border-emerald-200' : 'bg-crimson-50/70 border-crimson-200'
+        }">
+          <div class="flex items-start justify-between gap-2">
+            <div class="text-xs sm:text-sm font-bold text-navy-900">
+              <span class="text-slate-500">[${res.part}]</span> ข้อที่ ${res.num}: ${res.prompt}
+            </div>
+            <span class="text-lg shrink-0">${res.isCorrect ? '✅' : '❌'}</span>
+          </div>
+          <div class="mt-2 text-xs sm:text-sm bg-white px-3 py-2 rounded-xl border border-slate-200">
+            <span class="text-slate-500">คำตอบที่นักเรียนตอบ:</span>
+            <span class="font-bold ${res.isCorrect ? 'text-emerald-700' : 'text-crimson-700'}">
+              ${escapeHtml(res.enteredAnswer)}
+            </span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('exercise-modal').classList.remove('hidden');
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function closeExerciseModal() {
+      document.getElementById('exercise-modal').classList.add('hidden');
+    }
+
+    function resetAndReshuffleExercise() {
+      closeExerciseModal();
+      initExerciseTab();
+      showToast('🔄 สุ่มลำดับคำถามชุดใหม่เรียบร้อยแล้วครับ', '🔄');
+    }
+
+    /* ==========================================================
+       6. TAB 4: POST-TEST (BRAND-NEW CHEMISTRY LAB SCENARIO)
+       ========================================================== */
+    const POSTTEST_SCENARIO_LINES = [
+      {
+        text: 'Emergency services, 1669. What is your emergency?',
+        pitch: 0.92,
+        rate: 0.95
+      },
+      {
+        text: 'Hello! Please send an ambulance to Thep Udom Wittaya School right away! A Grade 9 student just fainted in the chemistry lab!',
+        pitch: 1.15,
+        rate: 0.98
+      },
+      {
+        text: 'Stay calm. Where exactly inside the school is the chemistry lab?',
+        pitch: 0.92,
+        rate: 0.95
+      },
+      {
+        text: 'It is on the third floor of the Science Building, right next to the school clinic.',
+        pitch: 1.15,
+        rate: 0.96
+      },
+      {
+        text: 'Got it. Third floor, Science Building, next to the clinic. Is the student conscious and breathing?',
+        pitch: 0.92,
+        rate: 0.95
+      },
+      {
+        text: 'He is unconscious, but he is still breathing. He also has a small burn on his left hand from hot water.',
+        pitch: 1.15,
+        rate: 0.96
+      },
+      {
+        text: 'An ambulance will arrive in six minutes. Open the windows for fresh air, cool his hand with clean water, and stay on the line.',
+        pitch: 0.92,
+        rate: 0.94
+      }
+    ];
+
+    const POSTTEST_QUESTIONS_BANK = [
+      {
+        id: 'pt_1',
+        question: 'What is the main emergency in this phone call?',
+        options: [
+          'A Grade 9 student fainted and got a hand burn in the chemistry lab.',
+          'A big fire broke out in the school cafeteria during lunch.',
+          'Two motorcycles crashed in front of the main bus station.',
+          'An elderly man was coughing from smoke in a kitchen.'
+        ],
+        correctOption: 'A Grade 9 student fainted and got a hand burn in the chemistry lab.'
+      },
+      {
+        id: 'pt_2',
+        question: 'Where is the exact location and landmark mentioned by the caller?',
+        options: [
+          'Third floor of the Science Building, next to the school clinic',
+          'First floor of the City Library, behind the post office',
+          'Second floor of the Sports Hall, opposite the swimming pool',
+          'Main gate of the school, near the night market'
+        ],
+        correctOption: 'Third floor of the Science Building, next to the school clinic'
+      },
+      {
+        id: 'pt_3',
+        question: 'What is the student’s condition according to the caller?',
+        options: [
+          'He is unconscious, breathing, and has a small burn on his left hand.',
+          'He is awake, shouting loudly, and his right leg is bleeding.',
+          'He is completely fine and already walking home alone.',
+          'He broke both arms while playing football on the field.'
+        ],
+        correctOption: 'He is unconscious, breathing, and has a small burn on his left hand.'
+      },
+      {
+        id: 'pt_4',
+        question: 'Which emergency service did the caller ask the 1669 operator to send?',
+        options: [
+          'An ambulance',
+          'A fire truck',
+          'A police helicopter',
+          'A school repair van'
+        ],
+        correctOption: 'An ambulance'
+      },
+      {
+        id: 'pt_5',
+        question: 'What did the operator tell the caller to do while waiting for the ambulance?',
+        options: [
+          'Open the windows, cool his hand with clean water, and stay on the line.',
+          'Carry the unconscious student down the stairs immediately.',
+          'Give him hot coffee to drink and hang up the phone.',
+          'Lock the chemistry lab door and go back to class.'
+        ],
+        correctOption: 'Open the windows, cool his hand with clean water, and stay on the line.'
+      }
+    ];
+
+    const postTestState = {
+      studentName: '',
+      questions: [],
+      currentIndex: 0,
+      userAnswers: []
+    };
+
+    function playPostTestScenario() {
+      if (!globalSoundEnabled) {
+        showToast('🔇 กรุณากดเปิดเสียงที่มุมขวาบนก่อนฟังเสียงสถานการณ์ครับ', '🔇');
+        return;
+      }
+      stopSpeech();
+      const listenBtn = document.getElementById('posttest-listen-btn');
+      const stopBtn = document.getElementById('posttest-stop-btn');
+      listenBtn.innerHTML = '<span>🔊</span><span>Playing Audio...</span>';
+      stopBtn.classList.remove('hidden');
+
+      let idx = 0;
+      let active = true;
+      // Hook stopSpeech cleanly
+      const origStop = stopSpeech;
+      function speakLine() {
+        if (idx >= POSTTEST_SCENARIO_LINES.length) {
+          listenBtn.innerHTML = '<span>🔊</span><span>Listen Again</span>';
+          stopBtn.classList.add('hidden');
+          return;
+        }
+        const line = POSTTEST_SCENARIO_LINES[idx];
+        speakEnglish(line.text, {
+          pitch: line.pitch,
+          rate: line.rate,
+          silentIfMuted: true,
+          onend: () => {
+            idx++;
+            setTimeout(speakLine, 220);
+          }
+        });
+      }
+      speakLine();
+    }
+
+    function startPostTest() {
+      const nameInput = document.getElementById('posttest-student-name');
+      const name = nameInput.value.trim();
+      if (!name) {
+        showToast('กรุณากรอก "ชื่อ-นามสกุล" ก่อนเริ่มทำแบบทดสอบครับ', '⚠️');
+        nameInput.focus();
+        nameInput.classList.add('border-crimson-600', 'ring-4', 'ring-crimson-200');
+        setTimeout(() => nameInput.classList.remove('ring-4', 'ring-crimson-200'), 1800);
+        return;
+      }
+
+      postTestState.studentName = name;
+      // Shuffle both question order and option order on every start
+      postTestState.questions = shuffleArray(POSTTEST_QUESTIONS_BANK).map(q => ({
+        ...q,
+        shuffledOptions: shuffleArray(q.options)
+      }));
+      postTestState.currentIndex = 0;
+      postTestState.userAnswers = new Array(postTestState.questions.length).fill(null);
+
+      document.getElementById('posttest-start-screen').classList.add('hidden');
+      document.getElementById('posttest-result-screen').classList.add('hidden');
+      document.getElementById('posttest-quiz-screen').classList.remove('hidden');
+
+      renderCurrentPostTestQuestion();
+      // Auto-play the listening scenario once at start if sound is enabled
+      if (globalSoundEnabled) {
+        setTimeout(() => playPostTestScenario(), 300);
+      }
+    }
+
+    function renderCurrentPostTestQuestion() {
+      const idx = postTestState.currentIndex;
+      const total = postTestState.questions.length;
+      const q = postTestState.questions[idx];
+
+      // Update Progress Bar
+      const pct = Math.round(((idx + 1) / total) * 100);
+      document.getElementById('posttest-progress-label').textContent = `ข้อที่ ${idx + 1} จาก ${total}`;
+      document.getElementById('posttest-progress-percent').textContent = `${pct}%`;
+      document.getElementById('posttest-progress-bar').style.width = `${pct}%`;
+
+      // Question text
+      document.getElementById('posttest-question-text').textContent = `${idx + 1}. ${q.question}`;
+
+      // Options
+      const optsContainer = document.getElementById('posttest-options-container');
+      const savedAns = postTestState.userAnswers[idx];
+      optsContainer.innerHTML = q.shuffledOptions.map((opt, oIdx) => {
+        const letter = ['A', 'B', 'C', 'D'][oIdx];
+        const isChecked = savedAns === opt;
+        return `
+          <label class="flex items-center gap-3 p-3.5 rounded-2xl border-2 cursor-pointer transition ${
+            isChecked
+              ? 'bg-blue-50 border-blue-700 text-navy-950 shadow-sm'
+              : 'bg-white border-slate-200 hover:border-blue-400 text-slate-800'
+          }">
+            <input type="radio" name="posttest_current_opt" value="${opt.replace(/"/g, '&quot;')}" ${isChecked ? 'checked' : ''}
+              onchange="selectPostTestOption(this.value)"
+              class="w-4 h-4 accent-blue-700 shrink-0" />
+            <span class="w-7 h-7 rounded-lg bg-slate-100 font-bold text-xs flex items-center justify-center text-navy-900 shrink-0">${letter}</span>
+            <span class="text-sm sm:text-base font-medium">${opt}</span>
+          </label>
+        `;
+      }).join('');
+
+      // Next Button Label
+      const nextLabel = document.getElementById('posttest-next-label');
+      if (idx === total - 1) {
+        nextLabel.textContent = 'ส่งคำตอบและดูผลคะแนน 🏁';
+      } else {
+        nextLabel.textContent = 'Next ➡️';
+      }
+    }
+
+    function selectPostTestOption(val) {
+      postTestState.userAnswers[postTestState.currentIndex] = val;
+      renderCurrentPostTestQuestion();
+    }
+
+    function nextPostTestQuestion() {
+      const idx = postTestState.currentIndex;
+      if (!postTestState.userAnswers[idx]) {
+        showToast('กรุณาเลือกคำตอบก่อนกดปุ่มถัดไปครับ', '⚠️');
+        return;
+      }
+
+      if (idx < postTestState.questions.length - 1) {
+        postTestState.currentIndex += 1;
+        renderCurrentPostTestQuestion();
+      } else {
+        finishPostTest();
+      }
+    }
+
+    function finishPostTest() {
+      stopSpeech();
+      let score = 0;
+      postTestState.questions.forEach((q, idx) => {
+        if (postTestState.userAnswers[idx] === q.correctOption) {
+          score += 1;
+        }
+      });
+
+      document.getElementById('posttest-quiz-screen').classList.add('hidden');
+      document.getElementById('posttest-result-screen').classList.remove('hidden');
+
+      document.getElementById('posttest-result-name').textContent = postTestState.studentName;
+      document.getElementById('posttest-result-score').textContent = score;
+
+      const emojiEl = document.getElementById('posttest-result-emoji');
+      const badgeEl = document.getElementById('posttest-result-badge');
+      if (score >= 4) {
+        emojiEl.textContent = '🏆';
+        badgeEl.textContent = 'ระดับคุณภาพ: ดีเยี่ยม (ผ่านเกณฑ์)';
+        playSfx('bonus');
+      } else if (score === 3) {
+        emojiEl.textContent = '🎖️';
+        badgeEl.textContent = 'ระดับคุณภาพ: ดี (ผ่านเกณฑ์)';
+        playSfx('good', 2);
+      } else {
+        emojiEl.textContent = '📘';
+        badgeEl.textContent = 'ระดับคุณภาพ: ควรทบทวนเพิ่มเติม';
+      }
+
+      const nowStr = new Date().toLocaleString('th-TH', {
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      });
+      document.getElementById('posttest-result-timestamp').textContent = `บันทึกผลเมื่อ: ${nowStr} น.`;
+    }
+
+    function resetPostTest() {
+      stopSpeech();
+      document.getElementById('posttest-result-screen').classList.add('hidden');
+      document.getElementById('posttest-start-screen').classList.remove('hidden');
+    }
+
+    /* ==========================================================
+       7. INITIALIZATION ON WINDOW LOAD
+       ========================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      renderKnowledgeTab();
+      bindArcadeControls();
+      initExerciseTab();
+      drawGameScene(performance.now());
+    });
+  </script>
+</body>
+</html>
